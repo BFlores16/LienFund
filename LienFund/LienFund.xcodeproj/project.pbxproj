@@ -16,6 +16,7 @@
 		A5439CC72738AC9B00FD189B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC52738AC9B00FD189B /* Main.storyboard */; };
 		A5439CC92738AC9E00FD189B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC82738AC9E00FD189B /* Assets.xcassets */; };
 		A5439CCC2738AC9E00FD189B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5439CCA2738AC9E00FD189B /* LaunchScreen.storyboard */; };
+		A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */; };
 		BAABB58EC8241F8C23C6E425 /* Pods_LienFund.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92677DA01EEB99C0A0FED3E2 /* Pods_LienFund.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		A5439CC82738AC9E00FD189B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5439CCB2738AC9E00FD189B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5439CCD2738AC9E00FD189B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		C8A7262DE8D230DA7EB8A8C7 /* Pods-LienFund.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LienFund.release.xcconfig"; path = "Target Support Files/Pods-LienFund/Pods-LienFund.release.xcconfig"; sourceTree = "<group>"; };
 		D44BD5B45AF1D64417B695AD /* Pods-LienFund.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LienFund.debug.xcconfig"; path = "Target Support Files/Pods-LienFund/Pods-LienFund.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 			children = (
 				A5439CC32738AC9B00FD189B /* BuyViewController.swift */,
 				A500705D275B2B7A00228D8D /* LienDetailsViewController.swift */,
+				A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				A5439CC42738AC9B00FD189B /* BuyViewController.swift in Sources */,
 				A509EB5C27489F29002434F2 /* LienListingTableViewCell.swift in Sources */,
 				A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */,
+				A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */,
 				A5439CC22738AC9B00FD189B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
