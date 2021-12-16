@@ -11,6 +11,6 @@ struct LienListingCellViewModel {
     let number: Int
     let state: String
     let county: String
-    let price: Double
-    let rate: Double
+    let price: String
+    let rate: String
 }

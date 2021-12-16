@@ -10,6 +10,7 @@ import UIKit
 class LienListingTableViewCell: UITableViewCell {
     @IBOutlet weak var LienNumberLabel: UILabel!
     @IBOutlet weak var LienLocationLabel: UILabel!
+    @IBOutlet weak var LienPriceLabel: UILabel!
     @IBOutlet weak var InterestRateLabel: UILabel!
     
     override func awakeFromNib() {

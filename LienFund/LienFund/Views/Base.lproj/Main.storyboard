@@ -80,7 +80,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hb-BI-5QZ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hb-BI-5QZ">
                                                             <rect key="frame" x="151" y="31" width="86.666666666666686" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -101,6 +101,7 @@
                                                     <outlet property="InterestRateLabel" destination="zQC-Eq-DaP" id="lw6-LD-9RQ"/>
                                                     <outlet property="LienLocationLabel" destination="RdU-4X-9Sj" id="MT4-wT-WyV"/>
                                                     <outlet property="LienNumberLabel" destination="QwG-HO-5VW" id="pmF-du-LYP"/>
+                                                    <outlet property="LienPriceLabel" destination="9hb-BI-5QZ" id="OtM-Ya-EUg"/>
                                                     <segue destination="Q2p-1d-bqG" kind="show" id="Xk4-Gc-VAk"/>
                                                 </connections>
                                             </tableViewCell>
@@ -446,7 +447,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nf1-jk-Hep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247.6635514018692" y="-651.18790496760266"/>
+            <point key="canvasLocation" x="1755" y="-334"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3qQ-sy-T8H">
@@ -572,9 +573,9 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7S-WU-JM8">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7S-WU-JM8">
                                                                     <rect key="frame" x="137" y="31" width="86.666666666666686" height="18"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -593,6 +594,7 @@
                                                             <outlet property="InterestRateLabel" destination="gaG-FF-pKP" id="Gz2-ls-TJb"/>
                                                             <outlet property="LienLocationLabel" destination="A03-RI-Cnp" id="rz0-vv-Bbe"/>
                                                             <outlet property="LienNumberLabel" destination="uQP-8l-QYD" id="cfm-6z-fwf"/>
+                                                            <segue destination="Q2p-1d-bqG" kind="show" id="iri-nq-bsC"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -702,6 +704,9 @@
             <point key="canvasLocation" x="-339.2523364485981" y="45.356371490280779"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xk4-Gc-VAk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>

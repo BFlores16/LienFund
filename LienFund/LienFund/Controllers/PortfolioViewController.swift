@@ -10,9 +10,9 @@ import Charts
 
 class PortfolioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChartViewDelegate {
     let lienListings: [LienListingCellViewModel] = [
-        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: 866.24, rate: 16.0),
-        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: 866.24, rate: 16.0),
-        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: 866.24, rate: 16.0)
+        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: String(866.24), rate: "16.0"),
+        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: "866.24", rate: "16.0"),
+        LienListingCellViewModel(number: 1000, state: "AZ", county: "Maricopa", price: "866.24", rate: "16.0")
     ]
     
     var lineChart = LineChartView()
