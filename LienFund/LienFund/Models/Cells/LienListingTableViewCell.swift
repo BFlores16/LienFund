@@ -12,6 +12,7 @@ class LienListingTableViewCell: UITableViewCell {
     @IBOutlet weak var LienLocationLabel: UILabel!
     @IBOutlet weak var LienPriceLabel: UILabel!
     @IBOutlet weak var InterestRateLabel: UILabel!
+    @IBOutlet weak var InterestRateFrame: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,9 +21,7 @@ class LienListingTableViewCell: UITableViewCell {
         let chevronImageView = UIImageView(image: chevronImage)
         accessoryView = chevronImageView
         
-        InterestRateLabel.layer.cornerRadius = 10
-        InterestRateLabel.layer.masksToBounds = true
-        
+        InterestRateFrame.layer.cornerRadius = 10
         
 //        DollarInterestStackView.layer.cornerRadius = 10
 //        DollarInterestStackView.layer.masksToBounds = true

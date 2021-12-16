@@ -39,7 +39,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OB-v6-ngT" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-NX-UMZ">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-NX-UMZ">
                                         <rect key="frame" x="5" y="108" width="418" height="727"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -70,34 +70,48 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQC-Eq-DaP">
-                                                            <rect key="frame" x="320.66666666666669" y="25" width="30" height="30"/>
-                                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OOC-YT-yeL">
+                                                            <rect key="frame" x="280.33333333333331" y="14" width="100" height="52"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hb-BI-5QZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKd-lo-f7F" userLabel="InterestRateFrame">
+                                                                    <rect key="frame" x="0.0" y="21" width="100" height="31"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQC-Eq-DaP">
+                                                                            <rect key="frame" x="35" y="6.6666666666666643" width="30" height="18"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="zQC-Eq-DaP" firstAttribute="centerX" secondItem="gKd-lo-f7F" secondAttribute="centerX" id="C8G-o8-DpW"/>
+                                                                        <constraint firstAttribute="height" constant="31" id="L3f-DB-pZj"/>
+                                                                        <constraint firstItem="zQC-Eq-DaP" firstAttribute="centerY" secondItem="gKd-lo-f7F" secondAttribute="centerY" id="u9j-O1-Dgf"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="xco-v6-PhU"/>
+                                                                <constraint firstAttribute="width" constant="100" id="QoJ-AA-xPr"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$116, 546.61" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hb-BI-5QZ">
-                                                            <rect key="frame" x="151" y="31" width="86.666666666666686" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="9hb-BI-5QZ" firstAttribute="centerY" secondItem="z1E-DC-4Ml" secondAttribute="centerY" id="B1H-V5-CxI"/>
-                                                        <constraint firstItem="V97-s6-TAk" firstAttribute="centerY" secondItem="z1E-DC-4Ml" secondAttribute="centerY" id="I8Q-tm-yWw"/>
-                                                        <constraint firstItem="V97-s6-TAk" firstAttribute="leading" secondItem="z1E-DC-4Ml" secondAttribute="leadingMargin" id="VGP-TO-pK4"/>
-                                                        <constraint firstItem="zQC-Eq-DaP" firstAttribute="leading" secondItem="9hb-BI-5QZ" secondAttribute="trailing" constant="83" id="jMf-va-UCl"/>
-                                                        <constraint firstItem="zQC-Eq-DaP" firstAttribute="centerY" secondItem="z1E-DC-4Ml" secondAttribute="centerY" id="mYk-Vm-d2T"/>
-                                                        <constraint firstItem="9hb-BI-5QZ" firstAttribute="centerX" secondItem="z1E-DC-4Ml" secondAttribute="centerX" id="vKA-Tk-jwi"/>
+                                                        <constraint firstItem="V97-s6-TAk" firstAttribute="leading" secondItem="z1E-DC-4Ml" secondAttribute="leadingMargin" id="JCu-2j-io3"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="OOC-YT-yeL" secondAttribute="trailing" id="KOw-dj-YnV"/>
+                                                        <constraint firstItem="OOC-YT-yeL" firstAttribute="centerY" secondItem="z1E-DC-4Ml" secondAttribute="centerY" id="XXw-GD-HWP"/>
+                                                        <constraint firstItem="V97-s6-TAk" firstAttribute="centerY" secondItem="z1E-DC-4Ml" secondAttribute="centerY" id="v3F-V0-cjM"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="InterestRateFrame" destination="gKd-lo-f7F" id="kEC-K0-3xx"/>
                                                     <outlet property="InterestRateLabel" destination="zQC-Eq-DaP" id="lw6-LD-9RQ"/>
                                                     <outlet property="LienLocationLabel" destination="RdU-4X-9Sj" id="MT4-wT-WyV"/>
                                                     <outlet property="LienNumberLabel" destination="QwG-HO-5VW" id="pmF-du-LYP"/>

@@ -42,8 +42,8 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
          
          cell.LienNumberLabel.text = "# " + String(self.lienListingsCellsViewModels[indexPath.row].number)
          cell.LienLocationLabel.text = self.lienListingsCellsViewModels[indexPath.row].county + ", " + self.lienListingsCellsViewModels[indexPath.row].state
-         cell.LienPriceLabel.text = "$" + String(self.lienListingsCellsViewModels[indexPath.row].price)
-         cell.InterestRateLabel.text = String(self.lienListingsCellsViewModels[indexPath.row].rate) + "%"
+         cell.LienPriceLabel.text = String(self.lienListingsCellsViewModels[indexPath.row].price)
+         cell.InterestRateLabel.text = String(self.lienListingsCellsViewModels[indexPath.row].rate)
          // set the text from the data model
 //         cell.textLabel?.text = self.animals[indexPath.row]
          
@@ -88,8 +88,12 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func convertTaxLienToLienListingCellViewModels(taxLiens: [TaxLien]) -> [LienListingCellViewModel] {
         var viewModels = [LienListingCellViewModel]()
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
         for lien in taxLiens {
-            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: String(format: "%.02f", lien.price), rate: String(format: "%.1f%", lien.rate)))
+            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate)))
         }
         return viewModels
     }
