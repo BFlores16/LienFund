@@ -699,7 +699,29 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6n-Oi-3Nt">
                                         <rect key="frame" x="0.0" y="221" width="428" height="705"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="10" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZVi-RG-CxG">
+                                                <rect key="frame" x="20" y="20" width="389" height="579"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3fa-sP-vYO">
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="389" height="70"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3fa-sP-vYO" id="8Om-Gt-13k">
+                                                            <rect key="frame" x="0.0" y="0.0" width="389" height="70"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZVi-RG-CxG" secondAttribute="bottom" constant="106" id="1DW-Wr-7Xu"/>
+                                            <constraint firstItem="ZVi-RG-CxG" firstAttribute="top" secondItem="w6n-Oi-3Nt" secondAttribute="top" constant="20" id="80u-RD-CB0"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZVi-RG-CxG" secondAttribute="trailing" constant="19" id="ily-qr-sE4"/>
+                                            <constraint firstItem="ZVi-RG-CxG" firstAttribute="leading" secondItem="w6n-Oi-3Nt" secondAttribute="leading" constant="20" id="z9s-gl-sBD"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" name="GreenBackground"/>
@@ -729,6 +751,7 @@
                     <navigationItem key="navigationItem" id="mih-ch-Ron"/>
                     <connections>
                         <outlet property="taxLienFilterButton" destination="BU7-Pz-Q0P" id="NGO-Uh-N2U"/>
+                        <outlet property="taxLienListingsTableView" destination="ZVi-RG-CxG" id="d0Q-kw-h93"/>
                         <outlet property="taxLienListingsTableViewFrame" destination="w6n-Oi-3Nt" id="tpP-bc-ufx"/>
                         <outlet property="taxLienSearchBar" destination="qjJ-93-U24" id="XP6-pF-k4m"/>
                     </connections>
