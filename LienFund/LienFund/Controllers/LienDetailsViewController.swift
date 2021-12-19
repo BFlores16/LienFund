@@ -11,11 +11,28 @@ import Charts
 class LienDetailsViewController: UIViewController, ChartViewDelegate {
 
     var lineChart = LineChartView()
+    var taxLien:TaxLien? = nil
     @IBOutlet weak var BuyButton: UIButton!
     @IBOutlet weak var ProjectedEarningsChart: LineChartView!
+    @IBOutlet weak var lienNumberLabel: UILabel!
+    @IBOutlet weak var lienPriceLabel: UILabel!
+    @IBOutlet weak var lienDollarReturnLabel: UILabel!
+    @IBOutlet weak var lienPercentLabel: UILabel!
+    @IBOutlet weak var lienForeclosureDateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+
+        if taxLien != nil {
+            lienNumberLabel.text = String(taxLien?.number ?? 0)
+            lienPriceLabel.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0))
+            lienPercentLabel.text = String(format: "%.1f%%", taxLien?.rate ?? 0.0)
+        }
 
         BuyButton.layer.cornerRadius = 10
 
@@ -43,7 +60,6 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         ProjectedEarningsChart.rightAxis.drawAxisLineEnabled = false
         ProjectedEarningsChart.rightAxis.drawZeroLineEnabled = false
         
-        let sep = ["", "2", "4", "6", "8"]
         ProjectedEarningsChart.xAxis.enabled = false
         ProjectedEarningsChart.rightAxis.enabled = false
         ProjectedEarningsChart.highlightPerTapEnabled = false

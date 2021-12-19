@@ -19,6 +19,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var BuyButton: UIButton!
     @IBOutlet weak var ProjectedEarningsChart: LineChartView!
     @IBOutlet weak var ListingsTableView: UITableView!
+    @IBOutlet weak var PortfolioScrollView: UIScrollView!
     var myLiensIsExpanded = true
     let lienListingReusableCellIdentifier = "LienListCell"
     
@@ -47,6 +48,13 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let lienDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "lienDetailsViewController") as! LienDetailsViewController
+        
+        let indexPath = self.ListingsTableView.indexPathForSelectedRow
+        lienDetailsViewController.taxLien = TaxLien(number: 4899, county: "Maricopa", state: "AZ", price: 1016.24, rate: 16)
+        
+        self.navigationController?.pushViewController(lienDetailsViewController, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,10 +64,11 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.tabBarController?.viewDidLoad()
         ListingsTableView.delegate = self
         ListingsTableView.dataSource = self
-
+    
+        
         // Do any additional setup after loading the view.
         BuyButton.layer.cornerRadius = 10
 

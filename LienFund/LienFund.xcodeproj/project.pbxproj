@@ -16,6 +16,11 @@
 		A5439CC72738AC9B00FD189B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC52738AC9B00FD189B /* Main.storyboard */; };
 		A5439CC92738AC9E00FD189B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC82738AC9E00FD189B /* Assets.xcassets */; };
 		A5439CCC2738AC9E00FD189B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5439CCA2738AC9E00FD189B /* LaunchScreen.storyboard */; };
+		A57B2E73276E71A600AD062B /* LienListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E72276E71A600AD062B /* LienListingsViewController.swift */; };
+		A57B2E77276E974500AD062B /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E76276E974500AD062B /* HomeTabBarController.swift */; };
+		A57B2E7B276EA3AB00AD062B /* EmbeddedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E7A276EA3AB00AD062B /* EmbeddedNavigationController.swift */; };
+		A57B2E80276EDADD00AD062B /* TaxLienListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E7E276EDADD00AD062B /* TaxLienListingTableViewCell.swift */; };
+		A57B2E81276EDADD00AD062B /* TaxLienListingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57B2E7F276EDADD00AD062B /* TaxLienListingTableViewCell.xib */; };
 		A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */; };
 		A5E98CCF2765299000F929A8 /* liens_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5E98CCE2765299000F929A8 /* liens_data.txt */; };
 		A5E98CD12765364400F929A8 /* TaxLien.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E98CD02765364400F929A8 /* TaxLien.swift */; };
@@ -36,6 +41,11 @@
 		A5439CC82738AC9E00FD189B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5439CCB2738AC9E00FD189B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5439CCD2738AC9E00FD189B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A57B2E72276E71A600AD062B /* LienListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienListingsViewController.swift; sourceTree = "<group>"; };
+		A57B2E76276E974500AD062B /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		A57B2E7A276EA3AB00AD062B /* EmbeddedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationController.swift; sourceTree = "<group>"; };
+		A57B2E7E276EDADD00AD062B /* TaxLienListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxLienListingTableViewCell.swift; sourceTree = "<group>"; };
+		A57B2E7F276EDADD00AD062B /* TaxLienListingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxLienListingTableViewCell.xib; sourceTree = "<group>"; };
 		A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		A5E98CCE2765299000F929A8 /* liens_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = liens_data.txt; path = LienFund/Data/liens_data.txt; sourceTree = SOURCE_ROOT; };
 		A5E98CD02765364400F929A8 /* TaxLien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxLien.swift; sourceTree = "<group>"; };
@@ -69,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				A509EB5B27489F29002434F2 /* LienListingTableViewCell.swift */,
+				A57B2E7E276EDADD00AD062B /* TaxLienListingTableViewCell.swift */,
+				A57B2E7F276EDADD00AD062B /* TaxLienListingTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -132,6 +144,9 @@
 				A5439CC32738AC9B00FD189B /* BuyViewController.swift */,
 				A500705D275B2B7A00228D8D /* LienDetailsViewController.swift */,
 				A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */,
+				A57B2E72276E71A600AD062B /* LienListingsViewController.swift */,
+				A57B2E76276E974500AD062B /* HomeTabBarController.swift */,
+				A57B2E7A276EA3AB00AD062B /* EmbeddedNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +238,7 @@
 				A5E98CCF2765299000F929A8 /* liens_data.txt in Resources */,
 				A5439CCC2738AC9E00FD189B /* LaunchScreen.storyboard in Resources */,
 				A5439CC92738AC9E00FD189B /* Assets.xcassets in Resources */,
+				A57B2E81276EDADD00AD062B /* TaxLienListingTableViewCell.xib in Resources */,
 				A5439CC72738AC9B00FD189B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,12 +294,16 @@
 			files = (
 				A509EB5A274612CE002434F2 /* LienListingCellViewModel.swift in Sources */,
 				A5E98CD427653FE600F929A8 /* ShortStates.swift in Sources */,
+				A57B2E77276E974500AD062B /* HomeTabBarController.swift in Sources */,
 				A500705E275B2B7A00228D8D /* LienDetailsViewController.swift in Sources */,
 				A5439CC42738AC9B00FD189B /* BuyViewController.swift in Sources */,
+				A57B2E73276E71A600AD062B /* LienListingsViewController.swift in Sources */,
 				A509EB5C27489F29002434F2 /* LienListingTableViewCell.swift in Sources */,
+				A57B2E7B276EA3AB00AD062B /* EmbeddedNavigationController.swift in Sources */,
 				A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */,
 				A5E98CD12765364400F929A8 /* TaxLien.swift in Sources */,
 				A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */,
+				A57B2E80276EDADD00AD062B /* TaxLienListingTableViewCell.swift in Sources */,
 				A5439CC22738AC9B00FD189B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

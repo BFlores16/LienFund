@@ -54,7 +54,28 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
      // method to run when table view cell is tapped
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          print("You tapped cell number \(indexPath.row).")
+//         let detailsViewController = LienDetailsViewController()
+//         detailsViewController.modalPresentationStyle = .fullScreen
+//         self.navigationController?.pushViewController(detailsViewController, animated: true)
+         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+         let lienDetailsViewController = storyBoard.instantiateViewController(withIdentifier: "lienDetailsViewController") as! LienDetailsViewController
+         
+         let indexPath = self.ListingsTableView.indexPathForSelectedRow
+         lienDetailsViewController.taxLien = self.taxLiens[indexPath!.row]
+
+         self.navigationController?.pushViewController(lienDetailsViewController, animated: true)
      }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "toLienDetails") {
+//            let lienDetailsViewController = segue.destination as? LienDetailsViewController
+//            let indexPath = self.ListingsTableView.indexPathForSelectedRow
+//            lienDetailsViewController?.taxLien = self.taxLiens[indexPath!.row]
+//        }
+//        let lienDetailsViewController = segue.destination as? LienDetailsViewController
+//        let indexPath = self.ListingsTableView.indexPathForSelectedRow
+//        lienDetailsViewController?.taxLien = self.taxLiens[indexPath!.row]
+    }
     
     func readTxtFile(fileName: String) -> [String] {
         var lines = [String]()
