@@ -17,6 +17,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h93-MM-mDy">
+                        <rect key="frame" x="7" y="5" width="306" height="60"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yvF-Pc-DNJ" userLabel="NumberLocationStackView">
                         <rect key="frame" x="16" y="14" width="48" height="42"/>
                         <subviews>
@@ -56,11 +60,16 @@
                     <constraint firstAttribute="trailing" secondItem="Kw8-DK-z0D" secondAttribute="trailing" constant="16" id="Ivs-4P-pEd"/>
                     <constraint firstItem="yvF-Pc-DNJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NLR-HX-rw4"/>
                     <constraint firstItem="yvF-Pc-DNJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TgB-fM-kUb"/>
+                    <constraint firstItem="h93-MM-mDy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="VzP-jd-5vx"/>
+                    <constraint firstAttribute="trailing" secondItem="h93-MM-mDy" secondAttribute="trailing" constant="7" id="iW6-GQ-grh"/>
+                    <constraint firstItem="h93-MM-mDy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="jRn-VK-e2S"/>
                     <constraint firstItem="Kw8-DK-z0D" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qmx-y3-SzE"/>
+                    <constraint firstAttribute="bottom" secondItem="h93-MM-mDy" secondAttribute="bottom" constant="5" id="zbb-v3-LRM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="CellFrame" destination="h93-MM-mDy" id="dS4-qD-sXF"/>
                 <outlet property="InterestRateLabel" destination="drI-SB-ebx" id="1XX-JQ-IG5"/>
                 <outlet property="LienLocationLabel" destination="1YX-bJ-kJL" id="vBB-D1-cuE"/>
                 <outlet property="LienNumberLabel" destination="52x-uP-5t3" id="HDn-a9-oi3"/>
