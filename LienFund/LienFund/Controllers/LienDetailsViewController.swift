@@ -12,30 +12,37 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
 
     var lineChart = LineChartView()
     var taxLien:TaxLien? = nil
-    @IBOutlet weak var BuyButton: UIButton!
+
+    // Chart
+    @IBOutlet weak var ProjectedEarningsChartFrame: UIView!
     @IBOutlet weak var ProjectedEarningsChart: LineChartView!
-    @IBOutlet weak var lienNumberLabel: UILabel!
-    @IBOutlet weak var lienPriceLabel: UILabel!
-    @IBOutlet weak var lienDollarReturnLabel: UILabel!
-    @IBOutlet weak var lienPercentLabel: UILabel!
-    @IBOutlet weak var lienForeclosureDateLabel: UILabel!
+    
+    // Header
+    @IBOutlet weak var TaxLienDetailsHeaderFrame: UIView!
+    @IBOutlet weak var TaxLienNumberHeader: UILabel!
+    @IBOutlet weak var TaxLienLocationHeader: UILabel!
+    @IBOutlet weak var TaxLienPriceHeader: UILabel!
+    @IBOutlet weak var TaxLienPercentHeader: UILabel!
+    
+    // Details
+    @IBOutlet weak var TaxLiensDetailsFrame: UIView!
+    @IBOutlet weak var TaxLienNumber: UILabel!
+    @IBOutlet weak var TaxLienPrice: UILabel!
+    @IBOutlet weak var TaxLienPercentAnnual: UILabel!
+    @IBOutlet weak var TaxLienPercentMonthly: UILabel!
+    @IBOutlet weak var TaxLienExpectedAnnualReturn: UILabel!
+    @IBOutlet weak var TaxLienAddress: UILabel!
+    @IBOutlet weak var TaxLienCityState: UILabel!
+    @IBOutlet weak var TaxLienZipCode: UILabel!
+    @IBOutlet weak var TaxLienTimeUntilExpiration: UILabel!
+    
+    // Button
+    @IBOutlet weak var AddButtonFrame: UIView!
+    @IBOutlet weak var AddToPortfolioButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale.current
-
-        if taxLien != nil {
-            lienNumberLabel.text = String(taxLien?.number ?? 0)
-            lienPriceLabel.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0))
-            lienPercentLabel.text = String(format: "%.1f%%", taxLien?.rate ?? 0.0)
-        }
-
-        BuyButton.layer.cornerRadius = 10
-
+        SetupUI()
         lineChart.delegate = self
         // Do any additional setup after loading the view.
         var dataEntries: [ChartDataEntry] = []
@@ -75,42 +82,70 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         
     }
 
+    func SetupUI() {
+        // Tax lien details
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+        if taxLien != nil {
+            TaxLienNumber.text = String(taxLien?.number ?? 0)
+            TaxLienPrice.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0))
+            TaxLienPercentAnnual.text = String(format: "%.1f%%", taxLien?.rate ?? 0.0)
+        }
+        
+        // Tax lien chart
+        ProjectedEarningsChartFrame.layer.cornerRadius = 10
+        ProjectedEarningsChartFrame.layer.shadowColor = UIColor.black.cgColor
+        ProjectedEarningsChartFrame.layer.shadowOpacity = 0.4
+        ProjectedEarningsChartFrame.layer.shadowRadius = 4.0
+        ProjectedEarningsChartFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        
+        // Details Header
+        TaxLienDetailsHeaderFrame.layer.cornerRadius = 10
+        TaxLienDetailsHeaderFrame.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        TaxLienDetailsHeaderFrame.clipsToBounds = true
+        
+        // Details Frame
+        TaxLiensDetailsFrame.layer.cornerRadius = 10
+        TaxLiensDetailsFrame.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        TaxLiensDetailsFrame.layer.shadowColor = UIColor.black.cgColor
+        TaxLiensDetailsFrame.layer.shadowOpacity = 0.4
+        TaxLiensDetailsFrame.layer.shadowRadius = 4.0
+        TaxLiensDetailsFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+
+        // Button
+//        AddButtonFrame.layer.borderColor = UIColor.lightGray.cgColor
+//        AddButtonFrame.layer.borderWidth = 1.0
+        AddButtonFrame.addBorder(toSide: UIView.ViewSide.Top, color: UIColor.lightGray.cgColor, thickness: 1.0)
+//        AddButtonFrame.addBorder(toSide: UIView.ViewSide.Bottom, color: UIColor.lightGray.cgColor, thickness: 1.0)
+        AddToPortfolioButton.layer.cornerRadius = 10
+        
+    }
     
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
         //self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-//        var dataEntries: [ChartDataEntry] = []
-//        for i in 0..<5 {
-//            let dataEntry = ChartDataEntry(x: Double(i), y: Double(i))
-//            dataEntries.append(dataEntry)
-//        }
-//        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
-//        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-//
-//        lineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.self.height)
-//        lineChart.center = view.center
-//        view.addSubview(lineChart)
-//        lineChartDataSet.colors = ChartColorTemplates.joyful()
-//        lineChart.legend.enabled = false
-//        lineChart.data = lineChartData
-//        lineChart.drawGridBackgroundEnabled = false
+}
+
+extension UIView {
+    enum ViewSide {
+        case Left, Right, Top, Bottom
     }
-    
-    
 
-    /*
-    // MARK: - Navigation
+    func addBorder(toSide side: ViewSide, color: CGColor, thickness: CGFloat) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let border = CALayer()
+        border.backgroundColor = color
+
+        switch side {
+        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+        }
+
+        layer.addSublayer(border)
     }
-    */
-
 }

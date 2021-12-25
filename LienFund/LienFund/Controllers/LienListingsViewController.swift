@@ -85,11 +85,6 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         return 1
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        let spacing: CGFloat = 1
-//        return spacing
-//    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let spacing: CGFloat = 10
         return spacing
@@ -108,6 +103,12 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         cell.InterestRateLabel.text = String(self.lienListingsCellsViewModels[indexPath.section].rate)
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LienDetailsViewController") as! LienDetailsViewController
+        navigationController?.pushViewController(vc, animated: true)
+        vc.taxLien = taxLiens[indexPath.section]
     }
     
     func readTxtFile(fileName: String) -> [String] {
