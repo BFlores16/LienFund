@@ -114,17 +114,12 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         TaxLiensDetailsFrame.layer.shadowRadius = 4.0
         TaxLiensDetailsFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
 
-        // Button
-//        AddButtonFrame.layer.borderColor = UIColor.lightGray.cgColor
-//        AddButtonFrame.layer.borderWidth = 1.0
         AddButtonFrame.addBorder(toSide: UIView.ViewSide.Top, color: UIColor.lightGray.cgColor, thickness: 1.0)
-//        AddButtonFrame.addBorder(toSide: UIView.ViewSide.Bottom, color: UIColor.lightGray.cgColor, thickness: 1.0)
         AddToPortfolioButton.layer.cornerRadius = 10
         
     }
     
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
-        //self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
     }
 }

@@ -20,6 +20,9 @@
 		A57B2E77276E974500AD062B /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E76276E974500AD062B /* HomeTabBarController.swift */; };
 		A57B2E80276EDADD00AD062B /* TaxLienListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B2E7E276EDADD00AD062B /* TaxLienListingTableViewCell.swift */; };
 		A57B2E81276EDADD00AD062B /* TaxLienListingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57B2E7F276EDADD00AD062B /* TaxLienListingTableViewCell.xib */; };
+		A582697D2778279B00B18D3C /* SelectableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A582697C2778279B00B18D3C /* SelectableButtonView.swift */; };
+		A582697F277827B500B18D3C /* SelectableButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A582697E277827B500B18D3C /* SelectableButtonView.xib */; };
+		A58269812778307000B18D3C /* BuildInvestmentPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58269802778307000B18D3C /* BuildInvestmentPortfolioViewController.swift */; };
 		A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */; };
 		A5E98CCF2765299000F929A8 /* liens_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5E98CCE2765299000F929A8 /* liens_data.txt */; };
 		A5E98CD12765364400F929A8 /* TaxLien.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E98CD02765364400F929A8 /* TaxLien.swift */; };
@@ -44,6 +47,9 @@
 		A57B2E76276E974500AD062B /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		A57B2E7E276EDADD00AD062B /* TaxLienListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxLienListingTableViewCell.swift; sourceTree = "<group>"; };
 		A57B2E7F276EDADD00AD062B /* TaxLienListingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxLienListingTableViewCell.xib; sourceTree = "<group>"; };
+		A582697C2778279B00B18D3C /* SelectableButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonView.swift; sourceTree = "<group>"; };
+		A582697E277827B500B18D3C /* SelectableButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectableButtonView.xib; sourceTree = "<group>"; };
+		A58269802778307000B18D3C /* BuildInvestmentPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInvestmentPortfolioViewController.swift; sourceTree = "<group>"; };
 		A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		A5E98CCE2765299000F929A8 /* liens_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = liens_data.txt; path = LienFund/Data/liens_data.txt; sourceTree = SOURCE_ROOT; };
 		A5E98CD02765364400F929A8 /* TaxLien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxLien.swift; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 				A509EB562746112A002434F2 /* Cells */,
 				A509EB59274612CE002434F2 /* LienListingCellViewModel.swift */,
 				A5E98CD02765364400F929A8 /* TaxLien.swift */,
+				A582697C2778279B00B18D3C /* SelectableButtonView.swift */,
+				A582697E277827B500B18D3C /* SelectableButtonView.xib */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 				A5E98CCB2761242400F929A8 /* PortfolioViewController.swift */,
 				A57B2E72276E71A600AD062B /* LienListingsViewController.swift */,
 				A57B2E76276E974500AD062B /* HomeTabBarController.swift */,
+				A58269802778307000B18D3C /* BuildInvestmentPortfolioViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A582697F277827B500B18D3C /* SelectableButtonView.xib in Resources */,
 				A5E98CCF2765299000F929A8 /* liens_data.txt in Resources */,
 				A5439CCC2738AC9E00FD189B /* LaunchScreen.storyboard in Resources */,
 				A5439CC92738AC9E00FD189B /* Assets.xcassets in Resources */,
@@ -298,9 +308,11 @@
 				A509EB5C27489F29002434F2 /* LienListingTableViewCell.swift in Sources */,
 				A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */,
 				A5E98CD12765364400F929A8 /* TaxLien.swift in Sources */,
+				A58269812778307000B18D3C /* BuildInvestmentPortfolioViewController.swift in Sources */,
 				A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */,
 				A57B2E80276EDADD00AD062B /* TaxLienListingTableViewCell.swift in Sources */,
 				A5439CC22738AC9B00FD189B /* SceneDelegate.swift in Sources */,
+				A582697D2778279B00B18D3C /* SelectableButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

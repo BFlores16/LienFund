@@ -28,6 +28,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienListingsTableView.dataSource = self
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
+        
         parseTaxLienData()
         setupInitialUI()
     }
@@ -44,7 +45,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         
         // Filter button
         let image = UIImage(named: "Filter2")// your image
-        let targetSize = CGSize(width: 40, height: 40)
+        let targetSize = CGSize(width: 30, height: 30)
         // Compute the scaling ratio for the width and height separately
         let widthScaleRatio = targetSize.width / image!.size.width
         let heightScaleRatio = targetSize.height / image!.size.height
@@ -95,7 +96,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         
         // create a new cell if needed or reuse an old one
         let cell = self.taxLienListingsTableView.dequeueReusableCell(withIdentifier: lienListingReusableCellIdentifier, for: indexPath) as! TaxLienListingTableViewCell
-            
+        cell.selectionStyle = .none
         
         cell.LienNumberLabel.text = "# " + String(self.lienListingsCellsViewModels[indexPath.section].number)
         cell.LienLocationLabel.text = self.lienListingsCellsViewModels[indexPath.section].county + ", " + self.lienListingsCellsViewModels[indexPath.section].state
@@ -109,6 +110,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LienDetailsViewController") as! LienDetailsViewController
         navigationController?.pushViewController(vc, animated: true)
         vc.taxLien = taxLiens[indexPath.section]
+        taxLienListingsTableView.deselectRow(at: indexPath, animated: true)
     }
     
     func readTxtFile(fileName: String) -> [String] {
