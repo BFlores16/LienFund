@@ -101,7 +101,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let state = String(lienElements[2])
             let price = Double(lienElements[3]) ?? 0.0
             let rate = Double(lienElements[4]) ?? 0.0
-            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate))
+            //liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate))
         }
         
         return liens
@@ -113,9 +113,9 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = Locale.current
-        for lien in taxLiens {
-            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate)))
-        }
+//        for lien in taxLiens {
+//            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate)))
+//        }
         return viewModels
     }
 }

@@ -1,101 +1,101 @@
-562,Douglas,Colorado,562.14,9.0
-566,Apache,Arizona,203.98,16.0
-756,Gila,Arizona,249.7,16.0
-800,Marshall,Kentucky,5021.63,12.0
-822,Gila,Arizona,380.36,16.0
-870,Marshall,Kentucky,75.74,12.0
-901,Cook,Illinois,4687.53,36.0
-955,Maricopa,Arizona,73.47,16.0
-985,Cook,Illinois,2054.26,36.0
-1010,Apache,Arizona,3810.77,16.0
-1088,Charlotte,Florida,207.33,18.0
-1185,Cochise,Arizona,1186.58,16.0
-1190,Gila,Arizona,606.33,16.0
-1264,Marshall,Kentucky,11130.89,12.0
-1289,Cochise,Arizona,1517.02,16.0
-1299,Douglas,Colorado,338.07,9.0
-1304,Montgomery,Alabama,1893.99,12.0
-1320,Montgomery,Alabama,722.44,12.0
-1339,Cochise,Arizona,1279.73,16.0
-1401,Douglas,Colorado,403.67,9.0
-1430,Mesa,Colorado,3288.72,9.0
-1431,Cochise,Arizona,975.88,16.0
-1527,Cook,Illinois,5261.18,36.0
-1611,Mesa,Colorado,2604.73,9.0
-1701,Charlotte,Florida,303.34,18.0
-1703,Apache,Arizona,51.08,16.0
-1776,Cook,Illinois,604.00,36.0
-1866,Marshall,Kentucky,1394.34,12.0
-1918,Charlotte,Florida,739.27,18.0
-1952,Cook,Illinois,5324.10,36.0
-1983,Cochise,Arizona,4731.03,16.0
-2025,Gila,Arizona,365.85,16.0
-2031,Marshall,Kentucky,11885.89,12.0
-2100,Cook,Illinois,474.03,36.0
-2178,Montgomery,Alabama,183.98,12.0
-2203,Maricopa,Arizona,1308.21,16.0
-2291,Montgomery,Alabama,290.02,12.0
-2335,Cook,Illinois,3994.17,36.0
-2371,Mesa,Colorado,5755.91,9.0
-2394,Mesa,Colorado,9378.96,9.0
-2481,Cook,Illinois,2210.13,36.0
-2497,Maricopa,Arizona,1532.35,16.0
-2499,Apache,Arizona,17039.38,16.0
-2569,Maricopa,Arizona,45.49,16.0
-2663,Charlotte,Florida,273.24,18.0
-2755,Mesa,Colorado,1734.67,9.0
-2779,Maricopa,Arizona,2050.87,16.0
-2845,Montgomery,Alabama,252.07,12.0
-2854,Douglas,Colorado,77.54,9.0
-2862,Douglas,Colorado,101.03,9.0
-2907,Marshall,Kentucky,2296.47,12.0
-2914,Charlotte,Florida,665.82,18.0
-2995,Marshall,Kentucky,877.56,12.0
-3015,Mesa,Colorado,1085.66,9.0
-3065,Apache,Arizona,89.3,16.0
-3146,Douglas,Colorado,157.73,9.0
-3151,Cochise,Arizona,30488.78,16.0
-3201,Maricopa,Arizona,35.76,16.0
-3215,Charlotte,Florida,165.83,18.0
-3231,Montgomery,Alabama,446.97,12.0
-3233,Maricopa,Arizona,668.78,16.0
-3280,Maricopa,Arizona,525.05,16.0
-3333,Douglas,Colorado,533.82,9.0
-3363,Gila,Arizona,715.61,16.0
-3409,Marshall,Kentucky,134.00,12.0
-3422,Charlotte,Florida,173.27,18.0
-3471,Apache,Arizona,1449.40,16.0
-3553,Charlotte,Florida,217.61,18.0
-3596,Apache,Arizona,116.05,16.0
-3662,Marshall,Kentucky,489.10,12.0
-3720,Gila,Arizona,1157.92,16.0
-3818,Charlotte,Florida,733.44,18.0
-3824,Gila,Arizona,2122.72,16.0
-3915,Montgomery,Alabama,811.52,12.0
-3980,Cochise,Arizona,753.80,16.0
-4035,Marshall,Kentucky,4554.13,12.0
-4083,Cook,Illinois,67.18,36.0
-4143,Gila,Arizona,588.97,16.0
-4228,Charlotte,Florida,810.94,18.0
-4270,Mesa,Colorado,1790.95,9.0
-4338,Cochise,Arizona,1449.62,16.0
-4437,Cochise,Arizona,4206.63,16.0
-4527,Cook,Illinois,68.26,36.0
-4959,Apache,Arizona,2106.98,16.0
-4668,Marshall,Kentucky,3425.46,12.0
-4701,Cochise,Arizona,5120.14,16.0
-4749,Apache,Arizona,507.54,16.0
-4760,Douglas,Colorado,220.0,9.0
-4823,Douglas,Colorado,481.80,9.0
-4878,Maricopa,Arizona,35.57,16.0
-4884,Montgomery,Alabama,675.78,12.0
-4978,Maricopa,Arizona,74.04,16.0
-5070,Mesa,Colorado,1777.00,9.0
-5135,Gila,Arizona,916.45,16.0
-5197,Montgomery,Alabama,151.88,12.0
-5206,Mesa,Colorado,2053.37,9.0
-5221,Apache,Arizona,71.18,16.0
-5223,Mesa,Colorado,3493.14,9.0
-5235,Montgomery,Alabama,790.00,12.0
-5320,Gila,Arizona,890.96,16.0
-5383,Douglas,Colorado,783.13,9.0
+562,Douglas,Colorado,562.14,9.0,3 Hillcrest Circle,Fort Lupton,80621
+566,Apache,Arizona,203.98,16.0,3780 S Camino Del Defiro,Green Valley,85614
+756,Gila,Arizona,249.7,16.0,13640 W Solano Dr,Litchfield Park,85340
+800,Marshall,Kentucky,5021.63,12.0,596 Westport Drive,Covington,41014
+822,Gila,Arizona,380.36,16.0,9842 Phoenix Dr,Mohave Valley,86440
+870,Marshall,Kentucky,75.74,12.0,7711 Marsh Street,Whitley City,42653
+901,Cook,Illinois,4687.53,36.0,7205 North Windsor St,Martinsville,62442
+955,Maricopa,Arizona,73.47,16.0,5055 E Somerset Dr,Cornville,86325
+985,Cook,Illinois,2054.26,36.0,266 East Fortune Avenue,Sutter,62373
+1010,Apache,Arizona,3810.77,16.0,859 S 12th St #104,Cottonwood,86326
+1088,Charlotte,Florida,207.33,18.0,3 James Lane,Saint Petersburd,33706
+1185,Cochise,Arizona,1186.58,16.0,23597 S 223rd Way,Queen Creek,85142
+1190,Gila,Arizona,606.33,16.0,302 N Colorado St,Casa Grande,85222
+1264,Marshall,Kentucky,11130.89,12.0,7711 Marsh Street,Whiteley City,42653
+1289,Cochise,Arizona,1517.02,16.0,3390 E Lockett Rd,Flagstaff,86004
+1299,Douglas,Colorado,338.07,9.0,873 Park Lane,Shawnee,80475
+1304,Montgomery,Alabama,1893.99,12.0,274 North Yew Rd,Myrtlewood,36763
+1320,Montgomery,Alabama,722.44,12.0,938 Great Court,Decatur,35609
+1339,Cochise,Arizona,1279.73,16.0,777 W Chandler Blvd,Chandler,85225
+1401,Douglas,Colorado,403.67,9.0,7610 Riverview Ave,Berthoud,80513
+1430,Mesa,Colorado,3288.72,9.0,99 Summerhouse Ave,Masonville,80541
+1431,Cochise,Arizona,975.88,16.0,482 S Citrus Ln,Gilbert,85297
+1527,Cook,Illinois,5261.18,36.0,579 Border Ave,Cordova,61242
+1611,Mesa,Colorado,2604.73,9.0,9466 Lowland Lane,Weldona,80653
+1701,Charlotte,Florida,303.34,18.0,29 Heirloom Street,Lakeland,33803
+1703,Apache,Arizona,51.08,16.0,94 Olive Street,Scottsdale,85254
+1776,Cook,Illinois,604.00,36.0,21 Cherry St,Chicago,60656
+1866,Marshall,Kentucky,1394.34,12.0,563 North St Paul Dr,Bremen,42325
+1918,Charlotte,Florida,739.27,18.0,8671 Andover St,Hollywood,33023
+1952,Cook,Illinois,5324.10,36.0,576 Military Ave,Carmi,62821
+1983,Cochise,Arizona,4731.03,16.0,8041A Sapphire Street,Chandler,85225
+2025,Gila,Arizona,365.85,16.0,96 Boulder Rd,Mesa,85215
+2031,Marshall,Kentucky,11885.89,12.0,483 Bright Ave,Horse Cave,42749
+2100,Cook,Illinois,474.03,36.0,348 County Road,Elmwood,61529
+2178,Montgomery,Alabama,183.98,12.0,8078 Cherry Street,Remlap,35133
+2203,Maricopa,Arizona,1308.21,16.0,3 West Amber Street,Phoenix,85038
+2291,Montgomery,Alabama,290.02,12.0,8206 San Juan Road,Birmingham,35243
+2335,Cook,Illinois,3994.17,36.0,7491 Aviation Court,Loraine,62349
+2371,Mesa,Colorado,5755.91,9.0,52 W. Lakewood Drive,Hugo,80821
+2394,Mesa,Colorado,9378.96,9.0,93 Locust St.,Brighton,80601
+2481,Cook,Illinois,2210.13,36.0,7492 Edgefield Dr,Fenton,61251
+2497,Maricopa,Arizona,1532.35,16.0,652 Marble Ave,Happy Jack,86024
+2499,Apache,Arizona,17039.38,16.0,20 Young Ave,Tucson,85709
+2569,Maricopa,Arizona,45.49,16.0,349 Washington Street,Tumacacori,85640
+2663,Charlotte,Florida,273.24,18.0,397 Birchpond Ave,Dunedin,34697
+2755,Mesa,Colorado,1734.67,9.0,9682 Paris Hill Drive,Broomfield,80020
+2779,Maricopa,Arizona,2050.87,16.0,750 Corporation Drive,Tacna,85352
+2845,Montgomery,Alabama,252.07,12.0,7 Railway St,Webb,36376
+2854,Douglas,Colorado,77.54,9.0,784 Beach Street,Colorado Springs,80922
+2862,Douglas,Colorado,101.03,9.0,8423 Ohio Ave,Fort Collins,80523
+2907,Marshall,Kentucky,2296.47,12.0,7427 Wild Rose St,Sexton Creek,40983
+2914,Charlotte,Florida,665.82,18.0,6 Madison Street,Tallahassee,32309
+2995,Marshall,Kentucky,877.56,12.0,13 Dew St,Flatwoods,41139
+3015,Mesa,Colorado,1085.66,9.0,7926 Lookout Circle,Kirk,80824
+3065,Apache,Arizona,89.3,16.0,34 Hartford Street,Phoenix,85005
+3146,Douglas,Colorado,157.73,9.0,2 County St,La Veta,81055
+3151,Cochise,Arizona,30488.78,16.0,85 Gonzales Dr,Queen Creek,85242
+3201,Maricopa,Arizona,35.76,16.0,391 Gates Ave,Laveen,85339
+3215,Charlotte,Florida,165.83,18.0,8505 Green Hill Street,Clearwater,33755
+3231,Montgomery,Alabama,446.97,12.0,662 S. Wright Rd,Vance,45390
+3233,Maricopa,Arizona,668.78,16.0,306 Ocean Street,Williams,86046
+3280,Maricopa,Arizona,525.05,16.0,816 Goldfield St,Phoenix,85006
+3333,Douglas,Colorado,533.82,9.0,74 Museum Dr,Grand Junction,81507
+3363,Gila,Arizona,715.61,16.0,445 Whitemarsh Court,Eloy,85231
+3409,Marshall,Kentucky,134.00,12.0,632 West Manor Station St,Gray,40734
+3422,Charlotte,Florida,173.27,18.0,98 North Redwood Ave,Tampa,33655
+3471,Apache,Arizona,1449.40,16.0,9737 Randall Mill Ave,Sasabe,85633
+3553,Charlotte,Florida,217.61,18.0,18 Lilac Dr,Cocoa,32824
+3596,Apache,Arizona,116.05,16.0,72 Riverside Rd,Phoenix,85051
+3662,Marshall,Kentucky,489.10,12.0,48 Highland St,Rowdy,41367
+3720,Gila,Arizona,1157.92,16.0,808 Snake Hill Lane,Queen Creek,85240
+3818,Charlotte,Florida,733.44,18.0,7 Creek Dr,Saint Lucie,34986
+3824,Gila,Arizona,2122.72,16.0,4 Pawnee Dr,Pinedale,85934
+3915,Montgomery,Alabama,811.52,12.0,303 Mill Street,Crane Hill,35053
+3980,Cochise,Arizona,753.80,16.0,54 Hazelnut Ave,Tucson,85730
+4035,Marshall,Kentucky,4554.13,12.0,911 Elm Street,Crab Orchard,40419
+4083,Cook,Illinois,67.18,36.0,7429 Dove St,Waterloo,62298
+4143,Gila,Arizona,588.97,16.0,458 Manchester Drive,Phoenix,85053
+4228,Charlotte,Florida,810.94,18.0,8833 SE. Apollo St,Tampa,33646
+4270,Mesa,Colorado,1790.95,9.0,845 Sussex Street,Englewood,80150
+4338,Cochise,Arizona,1449.62,16.0,55 Noble Avenue,Glendale,85308
+4437,Cochise,Arizona,4206.63,16.0,63 Ash Ave,Phoenix,85016
+4527,Cook,Illinois,68.26,36.0,89 Cliff Rd,Vermillion,61955
+4959,Apache,Arizona,2106.98,16.0,9009 South Ironwood St,Mesa,85204
+4668,Marshall,Kentucky,3425.46,12.0,995 West Anderson St,Tucson,85734
+4701,Cochise,Arizona,5120.14,16.0,45 Mayfair Ave,Bullhead City,86442
+4749,Apache,Arizona,507.54,16.0,9660 E. Rowan Road,Picacho,85141
+4760,Douglas,Colorado,220.0,9.0,343 North Ave,Boncarbo,81024
+4823,Douglas,Colorado,481.80,9.0,9504 Museum Avenue,Calhan,80808
+4878,Maricopa,Arizona,35.57,16.0,20 Queen St,Phoenix,85017
+4884,Montgomery,Alabama,675.78,12.0,77 Wakehurst Lane,Faulkville,35622
+4978,Maricopa,Arizona,74.04,16.0,9416 S. Wall Lane,Apache Junction,85278
+5070,Mesa,Colorado,1777.00,9.0,946 Jockey Hollow Lane,Aurora,80011
+5135,Gila,Arizona,916.45,16.0,7974 Willow Street,Tucson,85746
+5197,Montgomery,Alabama,151.88,12.0,35 South Columbia Street,Fruithurst,36262
+5206,Mesa,Colorado,2053.37,9.0,22 Liberty Drive,Pueblo,81007
+5221,Apache,Arizona,71.18,16.0,323 Griffin Road,Mayer,86333
+5223,Mesa,Colorado,3493.14,9.0,525 Division St,Fruita,81521
+5235,Montgomery,Alabama,790.00,12.0,508 Oval Lane,Alexandria,36250
+5320,Gila,Arizona,890.96,16.0,24 Foster Lane,Flagstaff,86002
+5383,Douglas,Colorado,783.13,9.0,25 Gravel Court,Julesburg,80737

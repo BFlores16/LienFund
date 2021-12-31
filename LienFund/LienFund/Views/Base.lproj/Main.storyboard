@@ -447,6 +447,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Add To Portfolio">
                                             <color key="baseBackgroundColor" name="GreenBackground"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="AddButtonClicked:" destination="ReK-j0-YDP" eventType="touchUpInside" id="EEW-Kc-rVr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

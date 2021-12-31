@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A500705E275B2B7A00228D8D /* LienDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A500705D275B2B7A00228D8D /* LienDetailsViewController.swift */; };
+		A5085C06277D46FA00A78D03 /* Expirations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C05277D46FA00A78D03 /* Expirations.swift */; };
+		A5085C08277E9A3900A78D03 /* TableColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C07277E9A3900A78D03 /* TableColumns.swift */; };
 		A509EB5A274612CE002434F2 /* LienListingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509EB59274612CE002434F2 /* LienListingCellViewModel.swift */; };
 		A509EB5C27489F29002434F2 /* LienListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509EB5B27489F29002434F2 /* LienListingTableViewCell.swift */; };
 		A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5439CBF2738AC9B00FD189B /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		92677DA01EEB99C0A0FED3E2 /* Pods_LienFund.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LienFund.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A500705D275B2B7A00228D8D /* LienDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienDetailsViewController.swift; sourceTree = "<group>"; };
+		A5085C05277D46FA00A78D03 /* Expirations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expirations.swift; sourceTree = "<group>"; };
+		A5085C07277E9A3900A78D03 /* TableColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumns.swift; sourceTree = "<group>"; };
 		A509EB59274612CE002434F2 /* LienListingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienListingCellViewModel.swift; sourceTree = "<group>"; };
 		A509EB5B27489F29002434F2 /* LienListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienListingTableViewCell.swift; sourceTree = "<group>"; };
 		A5439CBC2738AC9B00FD189B /* LienFund.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LienFund.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				A5E98CD327653FE600F929A8 /* ShortStates.swift */,
+				A5085C05277D46FA00A78D03 /* Expirations.swift */,
+				A5085C07277E9A3900A78D03 /* TableColumns.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -305,9 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5085C08277E9A3900A78D03 /* TableColumns.swift in Sources */,
 				A509EB5A274612CE002434F2 /* LienListingCellViewModel.swift in Sources */,
 				A5E98CD427653FE600F929A8 /* ShortStates.swift in Sources */,
 				A58269852778DAE200B18D3C /* AccountViewController.swift in Sources */,
+				A5085C06277D46FA00A78D03 /* Expirations.swift in Sources */,
 				A57B2E77276E974500AD062B /* HomeTabBarController.swift in Sources */,
 				A500705E275B2B7A00228D8D /* LienDetailsViewController.swift in Sources */,
 				A582698327785E0800B18D3C /* HelpViewController.swift in Sources */,

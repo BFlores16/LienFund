@@ -169,7 +169,10 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
             let state = String(lienElements[2])
             let price = Double(lienElements[3]) ?? 0.0
             let rate = Double(lienElements[4]) ?? 0.0
-            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate))
+            let address = String(lienElements[5])
+            let city = String(lienElements[6])
+            let zipcode = String(lienElements[7])
+            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate, address: address, city: city, zipcode: zipcode))
         }
         
         return liens
@@ -182,7 +185,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = Locale.current
         for lien in taxLiens {
-            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate)))
+            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate), address: lien.address, city: lien.city, zipcode: lien.zipcode))
         }
         return viewModels
     }

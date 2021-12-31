@@ -7,4 +7,5 @@ target 'LienFund' do
 
   # Pods for LienFund
 pod 'Charts'
+pod 'SQLite.swift', '~> 0.13.1'
 end

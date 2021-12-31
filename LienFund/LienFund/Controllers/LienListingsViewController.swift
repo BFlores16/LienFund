@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SQLite
 
 class LienListingsViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -21,15 +22,11 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        // This view controller itself will provide the delegate methods and row data for the table view.
         taxLienListingsTableView.delegate = self
         taxLienListingsTableView.dataSource = self
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
-        
-        parseTaxLienData()
+        lienListingsCellsViewModels = getTaxLiensData()
         setupInitialUI()
     }
     
@@ -137,7 +134,10 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
             let state = String(lienElements[2])
             let price = Double(lienElements[3]) ?? 0.0
             let rate = Double(lienElements[4]) ?? 0.0
-            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate))
+            let address = String(lienElements[5])
+            let city = String(lienElements[6])
+            let zipcode = String(lienElements[7])
+            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate, address: address, city: city, zipcode: zipcode))
         }
         
         return liens
@@ -150,8 +150,45 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = Locale.current
         for lien in taxLiens {
-            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate)))
+            viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate), address: lien.address, city: lien.city, zipcode: lien.zipcode))
         }
+        return viewModels
+    }
+    
+    func getTaxLiensData() -> [LienListingCellViewModel] {
+        var viewModels = [LienListingCellViewModel]()
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+        // Wrap everything in a do...catch to handle errors
+        do {
+            let path = NSSearchPathForDirectoriesInDomains(
+                .documentDirectory, .userDomainMask, true)
+
+            let db = try Connection("\(path.first ?? "")/db.sqlite3")
+            
+            let taxLiensTable = Table("tax_liens")
+            
+            let id = Expression<Int64>("id")
+            let lienNumber = Expression<Int>("lien_number")
+            let county = Expression<String?>("county")
+            let state = Expression<String>("state")
+            let price = Expression<String>("price")
+            let rate = Expression<String>("rate")
+            let address = Expression<String>("address")
+            let city = Expression<String>("city")
+            let zipcode = Expression<String>("zipcode")
+            
+            for lien in try db.prepare(taxLiensTable) {
+                let p = Double(lien[price])!
+                let r = Double(lien[rate])
+                viewModels.append(LienListingCellViewModel(number: lien[lienNumber], state: lien[state], county: lien[county] ?? "", price: currencyFormatter.string(from: NSNumber(value: p))!, rate: String(format: "%.1f%%", r!), address: lien[address], city: lien[city], zipcode: lien[zipcode]))
+            }
+        } catch {
+            print (error)
+        }
+        
         return viewModels
     }
 }

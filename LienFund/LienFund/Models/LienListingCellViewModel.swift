@@ -13,4 +13,7 @@ struct LienListingCellViewModel {
     let county: String
     let price: String
     let rate: String
+    let address: String
+    let city: String
+    let zipcode: String
 }

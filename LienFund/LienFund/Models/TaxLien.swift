@@ -13,4 +13,7 @@ struct TaxLien {
     var state: String
     var price: Double
     var rate: Double
+    let address: String
+    let city: String
+    let zipcode: String
 }

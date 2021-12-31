@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import SQLite
 
 class LienDetailsViewController: UIViewController, ChartViewDelegate {
 
@@ -121,6 +122,25 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
     
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func AddButtonClicked(_ sender: UIButton) {
+        do {
+            let path = NSSearchPathForDirectoriesInDomains(
+                .documentDirectory, .userDomainMask, true
+            ).first!
+            let db = try Connection("\(path)/db.sqlite3")
+            let users = Table("users")
+            let id = Expression<Int64>("id")
+            let name = Expression<String?>("name")
+            let email = Expression<String>("email")
+            for user in try db.prepare(users) {
+                print("id: \(user[id]), name: \(user[name]), email: \(user[email])")
+                // id: 1, name: Optional("Alice"), email: alice@mac.com
+            }
+        } catch {
+            print (error)
+        }
     }
 }
 
