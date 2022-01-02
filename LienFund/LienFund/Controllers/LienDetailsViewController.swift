@@ -10,9 +10,11 @@ import Charts
 import SQLite
 
 class LienDetailsViewController: UIViewController, ChartViewDelegate {
-
     var lineChart = LineChartView()
     var taxLien:TaxLien? = nil
+    var isInPortfolio: Bool = false
+    let lienListingsDB = ListingsTable()
+    let portfolioDB = PortfolioTable()
 
     // Chart
     @IBOutlet weak var ProjectedEarningsChartFrame: UIView!
@@ -44,6 +46,7 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
+        setupLabels()
         lineChart.delegate = self
         // Do any additional setup after loading the view.
         var dataEntries: [ChartDataEntry] = []
@@ -82,19 +85,39 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         
         
     }
-
-    func SetupUI() {
+    
+    func setupLabels() {
         // Tax lien details
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = Locale.current
         if taxLien != nil {
-            TaxLienNumber.text = String(taxLien?.number ?? 0)
-            TaxLienPrice.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0))
-            TaxLienPercentAnnual.text = String(format: "%.1f%%", taxLien?.rate ?? 0.0)
+            let number = String(taxLien?.number ?? 0)
+            let price = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0))!
+            let annualPercent = String(format: "%.1f%%", taxLien?.rate ?? 0.0)
+            
+            // Header
+            TaxLienNumberHeader.text = "#" + number
+            TaxLienPriceHeader.text = price
+            TaxLienPercentHeader.text = annualPercent
+            TaxLienLocationHeader.text = taxLien!.county + ", " + taxLien!.state
+            
+            // Body
+            TaxLienNumber.text = number
+            TaxLienPrice.text = price
+            TaxLienPercentAnnual.text = annualPercent + " (annually)"
+            let monthlyRate = taxLien!.rate / 2.0
+            TaxLienPercentMonthly.text = String(format: "%.1f%%", monthlyRate) + " (monthly)"
+            TaxLienExpectedAnnualReturn.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0 / 4.0))!
+            TaxLienAddress.text = taxLien?.address
+            TaxLienCityState.text = (taxLien!.city + ", " + taxLien!.state)
+            TaxLienZipCode.text = taxLien?.zipcode
+            TaxLienTimeUntilExpiration.text = Expirations.C[taxLien?.state ?? ""]
         }
-        
+    }
+
+    func SetupUI() {
         // Tax lien chart
         ProjectedEarningsChartFrame.layer.cornerRadius = 10
         ProjectedEarningsChartFrame.layer.shadowColor = UIColor.black.cgColor
@@ -115,32 +138,48 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         TaxLiensDetailsFrame.layer.shadowRadius = 4.0
         TaxLiensDetailsFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
 
+        // Portfolio button
         AddButtonFrame.addBorder(toSide: UIView.ViewSide.Top, color: UIColor.lightGray.cgColor, thickness: 1.0)
         AddToPortfolioButton.layer.cornerRadius = 10
-        
+        let lienNumber = self.portfolioDB.CheckLienExists(taxLien: self.taxLien!)
+        if (lienNumber == nil) {
+            isInPortfolio = false
+            updatePortfolioButton()
+        } else {
+            isInPortfolio = true
+            updatePortfolioButton()
+        }
     }
+    
+    func updatePortfolioButton() {
+        if (isInPortfolio) {
+            AddToPortfolioButton.tintColor = UIColor.red
+            AddToPortfolioButton.setTitle("Remove From Portfolio", for: .normal)
+        } else {
+            AddToPortfolioButton.tintColor = UIColor.init(named: "GreenBackground")
+            AddToPortfolioButton.setTitle("Add To Portfolio", for: .normal)
+        }
+    }
+
     
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func AddButtonClicked(_ sender: UIButton) {
-        do {
-            let path = NSSearchPathForDirectoriesInDomains(
-                .documentDirectory, .userDomainMask, true
-            ).first!
-            let db = try Connection("\(path)/db.sqlite3")
-            let users = Table("users")
-            let id = Expression<Int64>("id")
-            let name = Expression<String?>("name")
-            let email = Expression<String>("email")
-            for user in try db.prepare(users) {
-                print("id: \(user[id]), name: \(user[name]), email: \(user[email])")
-                // id: 1, name: Optional("Alice"), email: alice@mac.com
-            }
-        } catch {
-            print (error)
+        if (isInPortfolio) {
+            _ = self.portfolioDB.DeleteLien(taxLien: self.taxLien!)
+            _ = self.lienListingsDB.AddLien(taxLien: self.taxLien!)
+            isInPortfolio = false
+            updatePortfolioButton()
+        } else {
+            _ = self.portfolioDB.AddLien(taxLien: self.taxLien!)
+            _ = self.lienListingsDB.DeleteLien(taxLien: self.taxLien!)
+            isInPortfolio = true
+            updatePortfolioButton()
         }
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
     }
 }
 

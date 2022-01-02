@@ -7,13 +7,19 @@
 
 import UIKit
 import Charts
+import SQLite
 
 class PortfolioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChartViewDelegate {
-    
+        
     final let LIENS_DATA_FILE = "liens_data"
     var taxLiens = [TaxLien]()
     var lienListingsCellsViewModels = [LienListingCellViewModel]()
     let lienListingReusableCellIdentifier = "TaxLienListingTableViewCell"
+    let NC = NotificationCenter.default
+    
+    // Database
+    let lienListingsDB = ListingsTable()
+    let portfolioDB = PortfolioTable()
     
     var lineChart = LineChartView()
     @IBOutlet weak var BuyButton: UIButton!
@@ -26,6 +32,9 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
+        
         taxLienListingsTableView.delegate = self
         taxLienListingsTableView.dataSource = self
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
@@ -79,7 +88,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func parseTaxLienData() {
-        taxLiens = convertToLiensListings(liensData: readTxtFile(fileName: LIENS_DATA_FILE))
+        taxLiens = self.portfolioDB.GetTaxLiens()
         lienListingsCellsViewModels = convertTaxLienToLienListingCellViewModels(taxLiens: taxLiens)
     }
     
@@ -105,6 +114,11 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         taxLienListingsTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    @objc func portfolioChanged() {
+        parseTaxLienData()
+        taxLienListingsTableView.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.lienListingsCellsViewModels.count
     }
@@ -117,7 +131,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         let spacing: CGFloat = 10
         return spacing
     }
-
+    
     @IBAction func MyLiensButtonPressed(_ sender: UIButton) {
         var angle = 0.0
         myLiensIsExpanded = !myLiensIsExpanded
@@ -143,39 +157,6 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
                 taxLienListingsTableView.isHidden = finished
             }
         }
-    }
-    
-    func readTxtFile(fileName: String) -> [String] {
-        var lines = [String]()
-
-        if let dataURL = Bundle.main.url(forResource: fileName, withExtension: "txt") {
-            if let data = try? String(contentsOf: dataURL) {
-                lines = data.components(separatedBy: "\n")
-            }
-        }
-        lines.remove(at: lines.count - 1)
-        
-        return lines
-    }
-    
-    func convertToLiensListings(liensData: [String]) -> [TaxLien] {
-        var liens = [TaxLien]()
-        
-        for lien in liensData {
-            let lienElements = lien.split(separator: ",")
-
-            let number = Int(lienElements[0]) ?? 0
-            let county = String(lienElements[1])
-            let state = String(lienElements[2])
-            let price = Double(lienElements[3]) ?? 0.0
-            let rate = Double(lienElements[4]) ?? 0.0
-            let address = String(lienElements[5])
-            let city = String(lienElements[6])
-            let zipcode = String(lienElements[7])
-            liens.append(TaxLien(number: number, county: county, state: ShortStates.C[state] ?? "", price: price, rate: rate, address: address, city: city, zipcode: zipcode))
-        }
-        
-        return liens
     }
     
     func convertTaxLienToLienListingCellViewModels(taxLiens: [TaxLien]) -> [LienListingCellViewModel] {

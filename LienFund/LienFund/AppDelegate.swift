@@ -85,52 +85,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print (error)
         }
     }
-
-    func testDB() {
-        // Wrap everything in a do...catch to handle errors
+    
+    func createPortfolioTable() {
         do {
             let path = NSSearchPathForDirectoriesInDomains(
                 .documentDirectory, .userDomainMask, true)
 
             let db = try Connection("\(path.first ?? "")/db.sqlite3")
-
-            let users = Table("users")
+            
+            let portfolioTable = Table("portfolio")
+            
+            let delete = portfolioTable.drop(ifExists: true)
+            try db.run(delete)
+            
             let id = Expression<Int64>("id")
-            let name = Expression<String?>("name")
-            let email = Expression<String>("email")
-
-            try db.run(users.create { t in
+            let lienNumber = Expression<Int>("lien_number")
+            let county = Expression<String?>("county")
+            let state = Expression<String>("state")
+            let price = Expression<String>("price")
+            let rate = Expression<String>("rate")
+            let address = Expression<String>("address")
+            let city = Expression<String>("city")
+            let zipcode = Expression<String>("zipcode")
+            
+            try db.run(portfolioTable.create { t in
                 t.column(id, primaryKey: true)
-                t.column(name)
-                t.column(email, unique: true)
+                t.column(lienNumber, unique: true)
+                t.column(county)
+                t.column(state)
+                t.column(price)
+                t.column(rate)
+                t.column(address)
+                t.column(city)
+                t.column(zipcode)
             })
-            // CREATE TABLE "users" (
-            //     "id" INTEGER PRIMARY KEY NOT NULL,
-            //     "name" TEXT,
-            //     "email" TEXT NOT NULL UNIQUE
-            // )
+        } catch {
+            print (error)
+        }
+    }
+    
+    func createPurchasedTable() {
+        do {
+            let path = NSSearchPathForDirectoriesInDomains(
+                .documentDirectory, .userDomainMask, true)
 
-            let insert = users.insert(name <- "Alice", email <- "alice@mac.com")
-            let rowid = try db.run(insert)
-            // INSERT INTO "users" ("name", "email") VALUES ('Alice', 'alice@mac.com')
-
-            for user in try db.prepare(users) {
-                print("id: \(user[id]), name: \(user[name]), email: \(user[email])")
-                // id: 1, name: Optional("Alice"), email: alice@mac.com
-            }
-            // SELECT * FROM "users"
-
-            let alice = users.filter(id == rowid)
-
-            try db.run(alice.update(email <- email.replace("mac.com", with: "me.com")))
-            // UPDATE "users" SET "email" = replace("email", 'mac.com', 'me.com')
-            // WHERE ("id" = 1)
-
-//            try db.run(alice.delete())
-            // DELETE FROM "users" WHERE ("id" = 1)
-
-            try db.scalar(users.count) // 0
-            // SELECT count(*) FROM "users"
+            let db = try Connection("\(path.first ?? "")/db.sqlite3")
+            
+            let purchasedTable = Table("purchased")
+            
+            let delete = purchasedTable.drop(ifExists: true)
+            try db.run(delete)
+            
+            let id = Expression<Int64>("id")
+            let lienNumber = Expression<Int>("lien_number")
+            let county = Expression<String?>("county")
+            let state = Expression<String>("state")
+            let price = Expression<String>("price")
+            let rate = Expression<String>("rate")
+            let address = Expression<String>("address")
+            let city = Expression<String>("city")
+            let zipcode = Expression<String>("zipcode")
+            
+            try db.run(purchasedTable.create { t in
+                t.column(id, primaryKey: true)
+                t.column(lienNumber, unique: true)
+                t.column(county)
+                t.column(state)
+                t.column(price)
+                t.column(rate)
+                t.column(address)
+                t.column(city)
+                t.column(zipcode)
+            })
         } catch {
             print (error)
         }
@@ -138,7 +164,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        createTaxLiensTable()
+//        createTaxLiensTable()
+//        createPortfolioTable()
+//        createPurchasedTable()
         return true
     }
 

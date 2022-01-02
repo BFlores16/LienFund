@@ -14,6 +14,10 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     var taxLiens = [TaxLien]()
     var lienListingsCellsViewModels = [LienListingCellViewModel]()
     let lienListingReusableCellIdentifier = "TaxLienListingTableViewCell"
+    let NC = NotificationCenter.default
+    
+    // Database
+    let lienListingsDB = ListingsTable()
     
     @IBOutlet weak var taxLienSearchBar: UISearchBar!
     @IBOutlet weak var taxLienFilterButton: UIButton!
@@ -22,17 +26,21 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
+        
         taxLienListingsTableView.delegate = self
         taxLienListingsTableView.dataSource = self
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
-        lienListingsCellsViewModels = getTaxLiensData()
+        parseTaxLienData()
         setupInitialUI()
     }
     
     func parseTaxLienData() {
-        taxLiens = convertToLiensListings(liensData: readTxtFile(fileName: LIENS_DATA_FILE))
+        taxLiens = lienListingsDB.GetTaxLiens()
         lienListingsCellsViewModels = convertTaxLienToLienListingCellViewModels(taxLiens: taxLiens)
+//        taxLiens = convertToLiensListings(liensData: readTxtFile(fileName: LIENS_DATA_FILE))
+//        lienListingsCellsViewModels = convertTaxLienToLienListingCellViewModels(taxLiens: taxLiens)
     }
     
     func setupInitialUI() {
@@ -110,6 +118,11 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienListingsTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    @objc func portfolioChanged() {
+        parseTaxLienData()
+        taxLienListingsTableView.reloadData()
+    }
+    
     func readTxtFile(fileName: String) -> [String] {
         var lines = [String]()
 
@@ -152,43 +165,6 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         for lien in taxLiens {
             viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate), address: lien.address, city: lien.city, zipcode: lien.zipcode))
         }
-        return viewModels
-    }
-    
-    func getTaxLiensData() -> [LienListingCellViewModel] {
-        var viewModels = [LienListingCellViewModel]()
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale.current
-        // Wrap everything in a do...catch to handle errors
-        do {
-            let path = NSSearchPathForDirectoriesInDomains(
-                .documentDirectory, .userDomainMask, true)
-
-            let db = try Connection("\(path.first ?? "")/db.sqlite3")
-            
-            let taxLiensTable = Table("tax_liens")
-            
-            let id = Expression<Int64>("id")
-            let lienNumber = Expression<Int>("lien_number")
-            let county = Expression<String?>("county")
-            let state = Expression<String>("state")
-            let price = Expression<String>("price")
-            let rate = Expression<String>("rate")
-            let address = Expression<String>("address")
-            let city = Expression<String>("city")
-            let zipcode = Expression<String>("zipcode")
-            
-            for lien in try db.prepare(taxLiensTable) {
-                let p = Double(lien[price])!
-                let r = Double(lien[rate])
-                viewModels.append(LienListingCellViewModel(number: lien[lienNumber], state: lien[state], county: lien[county] ?? "", price: currencyFormatter.string(from: NSNumber(value: p))!, rate: String(format: "%.1f%%", r!), address: lien[address], city: lien[city], zipcode: lien[zipcode]))
-            }
-        } catch {
-            print (error)
-        }
-        
         return viewModels
     }
 }
