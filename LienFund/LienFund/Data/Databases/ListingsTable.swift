@@ -45,6 +45,7 @@ struct ListingsTable {
         } catch {
             print (error)
         }
+        taxLiens = taxLiens.sorted(by: {$0.number < $1.number})
         return taxLiens
     }
     

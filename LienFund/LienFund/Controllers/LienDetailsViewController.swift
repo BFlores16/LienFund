@@ -15,6 +15,8 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
     var isInPortfolio: Bool = false
     let lienListingsDB = ListingsTable()
     let portfolioDB = PortfolioTable()
+    
+    let NC = NotificationCenter.default
 
     // Chart
     @IBOutlet weak var ProjectedEarningsChartFrame: UIView!
@@ -45,6 +47,8 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
+        
         SetupUI()
         setupLabels()
         lineChart.delegate = self
@@ -151,6 +155,11 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         }
     }
     
+    @objc func portfolioChanged() {
+        isInPortfolio = !isInPortfolio
+        updatePortfolioButton()
+    }
+    
     func updatePortfolioButton() {
         if (isInPortfolio) {
             AddToPortfolioButton.tintColor = UIColor.red
@@ -170,13 +179,13 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
         if (isInPortfolio) {
             _ = self.portfolioDB.DeleteLien(taxLien: self.taxLien!)
             _ = self.lienListingsDB.AddLien(taxLien: self.taxLien!)
-            isInPortfolio = false
-            updatePortfolioButton()
+//            isInPortfolio = false
+            //updatePortfolioButton()
         } else {
             _ = self.portfolioDB.AddLien(taxLien: self.taxLien!)
             _ = self.lienListingsDB.DeleteLien(taxLien: self.taxLien!)
-            isInPortfolio = true
-            updatePortfolioButton()
+//            isInPortfolio = true
+            //updatePortfolioButton()
         }
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name(Strings.NCPortfolioChanged), object: nil)

@@ -45,6 +45,7 @@ struct PortfolioTable {
         } catch {
             print (error)
         }
+        taxLiens = taxLiens.sorted(by: {$0.number < $1.number})
         return taxLiens
     }
     
@@ -82,6 +83,27 @@ struct PortfolioTable {
         } catch {
             print(error)
             return -1
+        }
+    }
+    
+    func ClearTable() {
+        do {
+            let delete = portfolioTable.drop(ifExists: true)
+            try dbConnection!.run(delete)
+        
+            try dbConnection!.run(portfolioTable.create { t in
+                t.column(idCol, primaryKey: true)
+                t.column(lienNumberCol, unique: true)
+                t.column(countyCol)
+                t.column(stateCol)
+                t.column(priceCol)
+                t.column(rateCol)
+                t.column(addressCol)
+                t.column(cityCol)
+                t.column(zipcodeCol)
+            })
+        } catch {
+            print(error)
         }
     }
 }

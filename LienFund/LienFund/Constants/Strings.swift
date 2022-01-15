@@ -11,4 +11,5 @@ struct Strings {
     static let DBPath = NSSearchPathForDirectoriesInDomains(
         .documentDirectory, .userDomainMask, true).first
     static let NCPortfolioChanged = "PortfolioChanged"
+    static let NCPortfolioPurchaseCompleted = "PortfolioPurchaseCompleted"
 }

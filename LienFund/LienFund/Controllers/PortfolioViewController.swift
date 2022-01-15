@@ -20,6 +20,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     // Database
     let lienListingsDB = ListingsTable()
     let portfolioDB = PortfolioTable()
+    let purchasedDB = PurchasedTable()
     
     var lineChart = LineChartView()
     @IBOutlet weak var BuyButton: UIButton!
@@ -85,6 +86,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         ProjectedEarningsChartFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         
         parseTaxLienData()
+        updateBuyButton()
     }
     
     func parseTaxLienData() {
@@ -117,6 +119,7 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func portfolioChanged() {
         parseTaxLienData()
         taxLienListingsTableView.reloadData()
+        updateBuyButton()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,5 +172,39 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
             viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate), address: lien.address, city: lien.city, zipcode: lien.zipcode))
         }
         return viewModels
+    }
+    
+    @IBAction func BuyButtonPressed(_ sender: UIButton) {
+//        let completedAlert = UIAlertController(title: "Purchase Completed", message: "Your purchase has been confirmed. Lienfund will review your request and follow up with further instructions.", preferredStyle: UIAlertController.Style.alert)
+//        completedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//        
+//        // create the alert
+//        let confirmAlert = UIAlertController(title: "Confirm", message: "Are you sure you would like to submit your porfolio purchase request to Lienfund?", preferredStyle: UIAlertController.Style.alert)
+//        // add the actions (buttons)
+//        confirmAlert.addAction(UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+//            print("Portfolio Purchase Confirmed")
+//            for lien in self.taxLiens {
+//                _ = self.purchasedDB.AddLien(taxLien: lien)
+//            }
+//            self.portfolioDB.ClearTable()
+//            self.parseTaxLienData()
+//            self.taxLienListingsTableView.reloadData()
+//            self.NC.post(name: Notification.Name(Strings.NCPortfolioPurchaseCompleted), object: nil)
+//            self.present(completedAlert, animated: true, completion: nil)
+//        }))
+//        confirmAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//
+//        // show the alert
+//        self.present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    func updateBuyButton() {
+        if (self.taxLiens.isEmpty) {
+            BuyButton.isEnabled = false
+            BuyButton.tintColor = UIColor.lightGray
+        } else {
+            BuyButton.isEnabled = true
+            BuyButton.tintColor = UIColor.init(named: "GreenBackground")
+        }
     }
 }

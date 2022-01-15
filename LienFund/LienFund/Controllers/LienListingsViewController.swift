@@ -27,6 +27,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         super.viewDidLoad()
         
         NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
+        NC.addObserver(self, selector: #selector(portfolioPurchaseCompleted), name: Notification.Name(Strings.NCPortfolioPurchaseCompleted), object: nil)
         
         taxLienListingsTableView.delegate = self
         taxLienListingsTableView.dataSource = self
@@ -123,6 +124,10 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienListingsTableView.reloadData()
     }
     
+    @objc func portfolioPurchaseCompleted() {
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
     func readTxtFile(fileName: String) -> [String] {
         var lines = [String]()
 
@@ -165,6 +170,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         for lien in taxLiens {
             viewModels.append(LienListingCellViewModel(number: lien.number, state: lien.state, county: lien.county, price: currencyFormatter.string(from: NSNumber(value: lien.price))!, rate: String(format: "%.1f%%", lien.rate), address: lien.address, city: lien.city, zipcode: lien.zipcode))
         }
+        
         return viewModels
     }
 }
