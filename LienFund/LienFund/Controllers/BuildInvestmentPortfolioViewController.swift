@@ -7,12 +7,14 @@
 
 import UIKit
 
-class BuildInvestmentPortfolioViewController: UIViewController {
-
+class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObjectiveDelegate {
+    
+    var investmentObjectiveOption = 2
     @IBOutlet weak var TotalInvestmentFrame: UIView!
     @IBOutlet weak var InvestmentObjectiveButton: UIButton!
     @IBOutlet weak var totalInvestmentTextField: UITextField!
     
+    @IBOutlet weak var investmentObjectiveOptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -33,8 +35,9 @@ class BuildInvestmentPortfolioViewController: UIViewController {
     }
 
     @IBAction func InvestmentObjectiveButtonClicked(_ sender: UIButton) {
-        //let vc = InvestmentObjectiveOptionsViewController()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "InvestmentObjectiveOptionsViewController") as! InvestmentObjectiveOptionsViewController
+        vc.selectedOption = investmentObjectiveOption
+        vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         
         nav.modalPresentationStyle = .pageSheet
@@ -45,11 +48,30 @@ class BuildInvestmentPortfolioViewController: UIViewController {
         
         present(nav, animated: true, completion: nil)
     }
-    
+
     @objc func totalInvestmentTextFieldDidChange(_ textField: UITextField) {
 
         if let amountString = totalInvestmentTextField.text?.currencyInputFormatting() {
             totalInvestmentTextField.text = amountString
+        }
+    }
+    
+    func investmentObjectiveSelected(option: Int) {
+        switch (option) {
+        case 0:
+            investmentObjectiveOption = 0
+            investmentObjectiveOptionLabel.text = "High-Growth"
+            break
+        case 1:
+            investmentObjectiveOption = 1
+            investmentObjectiveOptionLabel.text = "Moderate, Diverse"
+            break
+        case 2:
+            investmentObjectiveOption = 2
+            investmentObjectiveOptionLabel.text = "Conservative"
+            break
+        default:
+            break
         }
     }
 }
