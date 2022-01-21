@@ -17,6 +17,7 @@
 		A5085C1527950CE800A78D03 /* InvestmentObjectiveOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C1427950CE800A78D03 /* InvestmentObjectiveOptionsViewController.swift */; };
 		A5085C172797CABE00A78D03 /* SelectStatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C162797CABE00A78D03 /* SelectStatesViewController.swift */; };
 		A5085C192797CD6700A78D03 /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C182797CD6700A78D03 /* StateTableViewCell.swift */; };
+		A5085C1B279A663500A78D03 /* TimeUntilExpirationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5085C1A279A663500A78D03 /* TimeUntilExpirationViewController.swift */; };
 		A509EB5A274612CE002434F2 /* LienListingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509EB59274612CE002434F2 /* LienListingCellViewModel.swift */; };
 		A509EB5C27489F29002434F2 /* LienListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509EB5B27489F29002434F2 /* LienListingTableViewCell.swift */; };
 		A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5439CBF2738AC9B00FD189B /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		A5085C1427950CE800A78D03 /* InvestmentObjectiveOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentObjectiveOptionsViewController.swift; sourceTree = "<group>"; };
 		A5085C162797CABE00A78D03 /* SelectStatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStatesViewController.swift; sourceTree = "<group>"; };
 		A5085C182797CD6700A78D03 /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
+		A5085C1A279A663500A78D03 /* TimeUntilExpirationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUntilExpirationViewController.swift; sourceTree = "<group>"; };
 		A509EB59274612CE002434F2 /* LienListingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienListingCellViewModel.swift; sourceTree = "<group>"; };
 		A509EB5B27489F29002434F2 /* LienListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LienListingTableViewCell.swift; sourceTree = "<group>"; };
 		A5439CBC2738AC9B00FD189B /* LienFund.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LienFund.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				A5085C12278FB03C00A78D03 /* PortfolioPreviewViewController.swift */,
 				A5085C1427950CE800A78D03 /* InvestmentObjectiveOptionsViewController.swift */,
 				A5085C162797CABE00A78D03 /* SelectStatesViewController.swift */,
+				A5085C1A279A663500A78D03 /* TimeUntilExpirationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				A5085C0D27823D4D00A78D03 /* PortfolioTable.swift in Sources */,
 				A5439CC02738AC9B00FD189B /* AppDelegate.swift in Sources */,
 				A5E98CD12765364400F929A8 /* TaxLien.swift in Sources */,
+				A5085C1B279A663500A78D03 /* TimeUntilExpirationViewController.swift in Sources */,
 				A58269812778307000B18D3C /* BuildInvestmentPortfolioViewController.swift in Sources */,
 				A5E98CCC2761242400F929A8 /* PortfolioViewController.swift in Sources */,
 				A5085C1527950CE800A78D03 /* InvestmentObjectiveOptionsViewController.swift in Sources */,

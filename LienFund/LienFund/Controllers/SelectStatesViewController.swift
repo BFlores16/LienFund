@@ -20,6 +20,16 @@ class SelectStatesViewController: UIViewController, UITableViewDelegate, UITable
         stateListTableView.delegate = self
         stateListTableView.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.tintColor = UIColor.init(named: "GreenBackground")
+        self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "arrow.backward")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(dismissPage))
+    }
+    
+    @objc func dismissPage() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

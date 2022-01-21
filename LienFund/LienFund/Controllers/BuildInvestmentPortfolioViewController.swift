@@ -7,20 +7,30 @@
 
 import UIKit
 
-class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObjectiveDelegate {
-    
+class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObjectiveDelegate, TimeUntilExpirationDelegate {
+        
     var investmentObjectiveOption = 2
+    var timeUntilExpirationOption = 3
     @IBOutlet weak var TotalInvestmentFrame: UIView!
     @IBOutlet weak var InvestmentObjectiveButton: UIButton!
     @IBOutlet weak var totalInvestmentTextField: UITextField!
     
     @IBOutlet weak var investmentObjectiveOptionLabel: UILabel!
+    @IBOutlet weak var timeUntilExpirationOptionLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         totalInvestmentTextField.addTarget(self, action: #selector(totalInvestmentTextFieldDidChange), for: .editingChanged)
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     func setupUI() {
@@ -48,6 +58,22 @@ class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObject
         
         present(nav, animated: true, completion: nil)
     }
+    
+    @IBAction func TimeUntilExpirationButtonClicked(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TimeUntilExpirationViewController") as! TimeUntilExpirationViewController
+        vc.selectedOption = timeUntilExpirationOption
+        vc.delegate = self
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalPresentationStyle = .pageSheet
+        
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        present(nav, animated: true, completion: nil)
+    }
+    
 
     @objc func totalInvestmentTextFieldDidChange(_ textField: UITextField) {
 
@@ -69,6 +95,29 @@ class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObject
         case 2:
             investmentObjectiveOption = 2
             investmentObjectiveOptionLabel.text = "Conservative"
+            break
+        default:
+            break
+        }
+    }
+    
+    func TimeUntilExpirationSelected(option: Int) {
+        switch (option) {
+        case 0:
+            timeUntilExpirationOption = 0
+            timeUntilExpirationOptionLabel.text = "No Preference"
+            break
+        case 1:
+            timeUntilExpirationOption = 1
+            timeUntilExpirationOptionLabel.text = "Long Time"
+            break
+        case 2:
+            timeUntilExpirationOption = 2
+            timeUntilExpirationOptionLabel.text = "Soon"
+            break
+        case 3:
+            timeUntilExpirationOption = 3
+            timeUntilExpirationOptionLabel.text = "Very Soon"
             break
         default:
             break
