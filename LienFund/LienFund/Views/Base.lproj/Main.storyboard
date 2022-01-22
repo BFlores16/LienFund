@@ -830,14 +830,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="378" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arizona, Florida, Illinois ..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoi-6n-U53">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Arizona, Florida, Illinois ..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoi-6n-U53">
                                         <rect key="frame" x="166" y="31" width="174" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="GreenBackground"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State Preference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYV-kp-LIb">
-                                        <rect key="frame" x="15" y="31" width="115" height="18"/>
+                                        <rect key="frame" x="15" y="31" width="143" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -853,7 +853,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <segue destination="ivN-fW-TwB" kind="show" id="3se-kS-Do3"/>
+                                            <segue destination="ivN-fW-TwB" kind="show" identifier="toStatesList" id="3se-kS-Do3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -861,7 +861,7 @@
                                 <constraints>
                                     <constraint firstItem="6jb-O3-oLU" firstAttribute="leading" secondItem="hoi-6n-U53" secondAttribute="trailing" constant="10" id="0Gg-nA-5n1"/>
                                     <constraint firstItem="r7i-vA-EDq" firstAttribute="leading" secondItem="9GC-6Q-F1H" secondAttribute="leading" id="7cl-W7-MHb"/>
-                                    <constraint firstItem="hoi-6n-U53" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oYV-kp-LIb" secondAttribute="trailing" constant="8" symbolic="YES" id="B1W-Y8-ZDN"/>
+                                    <constraint firstItem="hoi-6n-U53" firstAttribute="leading" secondItem="oYV-kp-LIb" secondAttribute="trailing" constant="8" symbolic="YES" id="B1W-Y8-ZDN"/>
                                     <constraint firstItem="oYV-kp-LIb" firstAttribute="top" secondItem="9GC-6Q-F1H" secondAttribute="top" constant="31" id="BWD-1t-kYl"/>
                                     <constraint firstAttribute="trailing" secondItem="r7i-vA-EDq" secondAttribute="trailing" id="CTq-lv-aIs"/>
                                     <constraint firstAttribute="bottom" secondItem="TsQ-sY-TUL" secondAttribute="bottom" id="DF6-1N-QmD"/>
@@ -1032,6 +1032,7 @@
                         <outlet property="InvestmentObjectiveButton" destination="f0U-EH-SLz" id="LbM-lL-tDZ"/>
                         <outlet property="TotalInvestmentFrame" destination="f0U-EH-SLz" id="SAj-wg-WKl"/>
                         <outlet property="investmentObjectiveOptionLabel" destination="IEP-2X-mbn" id="g4k-ir-6P3"/>
+                        <outlet property="statesListLabel" destination="hoi-6n-U53" id="JJu-IQ-jGY"/>
                         <outlet property="timeUntilExpirationOptionLabel" destination="yCm-Og-z6G" id="qTM-Tj-DiT"/>
                         <outlet property="totalInvestmentTextField" destination="JVB-sD-l2C" id="cU3-fr-iY7"/>
                     </connections>

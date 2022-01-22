@@ -7,15 +7,18 @@
 
 import UIKit
 
-class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObjectiveDelegate, TimeUntilExpirationDelegate {
+class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObjectiveDelegate, TimeUntilExpirationDelegate, StatesSelectedDelegate {
         
     var investmentObjectiveOption = 2
+    var selectedStates: [(stateName: String, isChecked: Bool)]? = []
+    var statesList: [(stateName: String, isChecked: Bool)]? = nil
     var timeUntilExpirationOption = 3
     @IBOutlet weak var TotalInvestmentFrame: UIView!
     @IBOutlet weak var InvestmentObjectiveButton: UIButton!
     @IBOutlet weak var totalInvestmentTextField: UITextField!
     
     @IBOutlet weak var investmentObjectiveOptionLabel: UILabel!
+    @IBOutlet weak var statesListLabel: UILabel!
     @IBOutlet weak var timeUntilExpirationOptionLabel: UILabel!
     
     
@@ -24,7 +27,16 @@ class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObject
         self.hideKeyboardWhenTappedAround()
         totalInvestmentTextField.addTarget(self, action: #selector(totalInvestmentTextFieldDidChange), for: .editingChanged)
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
+        statesList = createStatesList()
+        if selectedStates != nil && selectedStates!.count > 0 {
+            var states = ""
+            for state in selectedStates! {
+                states = states + state.stateName + ", "
+            }
+            statesListLabel.text = states
+        } else {
+            statesListLabel.text = "No Preference"
+        }
         setupUI()
     }
     
@@ -122,6 +134,49 @@ class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObject
         default:
             break
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toStatesList") {
+            if let vc = segue.destination as? SelectStatesViewController {
+                vc.statesList = statesList
+                vc.selectedStates = selectedStates
+                vc.delegate = self
+            }
+        }
+    }
+    
+    func StatesSelected(statesList: [(stateName: String, isChecked: Bool)], selectedStates: [(stateName: String, isChecked: Bool)]) {
+        self.statesList = statesList
+        self.selectedStates = selectedStates.sorted(by: {$0.stateName < $1.stateName})
+        if self.selectedStates!.count > 0 {
+            var states = ""
+            for state in self.selectedStates! {
+                states = states + state.stateName + ", "
+            }
+            if let i = states.lastIndex(of: ",") {
+                states.remove(at: i)
+            }
+            statesListLabel.text = states
+        } else {
+            statesListLabel.text = "No Preference"
+        }
+    }
+    
+    func createStatesList() -> [(stateName: String, isChecked: Bool)] {
+        return [("Alabama", false),("Alaska", false),("Arizona", false),("Arkansas", false)
+                ,("California", false),("Colorado", false),("Connecticut", false),("Delaware", false)
+                ,("Florida", false),("Georgia", false),("Hawaii", false),("Idaho", false)
+                ,("Illinois", false),("Indiana", false),("Iowa", false),("Kansas", false)
+                ,("Indiana", false),("Iowa", false),("Kansas", false),("Kentucky", false)
+                ,("Louisiana", false),("Maine", false),("Maryland", false),("Massachusetts", false)
+                ,("Michigan", false),("Minnesota", false),("Mississippi", false),("Missouri", false)
+                ,("Montana", false),("Nebraska", false),("Nevada", false),("New Hampshire", false)
+                ,("New Jersey", false),("New Mexico", false),("New York", false),("North Carolina", false)
+                ,("North Dakota", false),("Ohio", false),("Oklahoma", false),("Oregon", false)
+                ,("Pennsylvania", false),("Rhode Island", false),("South Dakota", false),("Tennessee", false)
+                ,("Texas", false),("Utah", false),("Vermont", false),("Virginia", false)
+                ,("Washington", false),("West Virginia", false),("Wisconsin", false),("Wyoming", false)]
     }
 }
 

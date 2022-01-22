@@ -34,7 +34,7 @@ class StateTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkButtonClicked(_ sender: UIButton) {
-        isChecked = !isChecked
-        updateCheckButton()
+//        isChecked = !isChecked
+//        updateCheckButton()
     }
 }

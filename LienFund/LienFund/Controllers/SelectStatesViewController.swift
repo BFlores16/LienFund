@@ -7,24 +7,36 @@
 
 import UIKit
 
+protocol StatesSelectedDelegate : AnyObject {
+    func StatesSelected(statesList: [(stateName: String, isChecked: Bool)], selectedStates: [(stateName: String, isChecked: Bool)])
+}
+
 class SelectStatesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var stateListTableView: UITableView!
+    weak var delegate: StatesSelectedDelegate?
     let lienListingReusableCellIdentifier = "StateCell"
+    var selectedStates: [(stateName: String, isChecked: Bool)]? = []
     var statesList: [(stateName: String, isChecked: Bool)]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        statesList = createStatesList()
+    
         stateListTableView.delegate = self
         stateListTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
         self.navigationController?.navigationBar.tintColor = UIColor.init(named: "GreenBackground")
         self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "arrow.backward")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(dismissPage))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        delegate?.StatesSelected(statesList: statesList!, selectedStates: selectedStates!)
     }
     
     @objc func dismissPage() {
@@ -52,66 +64,28 @@ class SelectStatesViewController: UIViewController, UITableViewDelegate, UITable
         
         cell.stateName.text = statesList?[indexPath.row].stateName
         cell.isChecked = statesList?[indexPath.row].isChecked ?? false
-
+        if (cell.isChecked) {
+            cell.checkButton.setImage(UIImage.init(systemName: "checkmark.square"), for: .normal)
+        } else {
+            cell.checkButton.setImage(UIImage.init(systemName: "square"), for: .normal)
+        }
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        statesList![indexPath.row].isChecked = !statesList![indexPath.row].isChecked
+        let cell = self.stateListTableView.dequeueReusableCell(withIdentifier: lienListingReusableCellIdentifier, for: indexPath) as! StateTableViewCell
+        cell.isChecked = !cell.isChecked
+        
+        if (statesList![indexPath.row].isChecked) {
+            selectedStates?.append(statesList![indexPath.row])
+        } else {
+            selectedStates?.removeAll(where: {$0.stateName == statesList![indexPath.row].stateName})
+        }
 
-//    "Nevada":"NV",
-//    "New Hampshire":"NH",
-//    "New Jersey":"NJ",
-//    "New Mexico":"NM",
-//    "New York":"NY",
-//    "North Carolina":"NC",
-//    "North Dakota":"ND",
-//    "Ohio":"OH",
-//    "Oklahoma":"OK",
-//    "Oregon":"OR",
-//    "Pennsylvania":"PA",
-//    "Rhode Island":"RI",
-//    "South Dakota":"SD",
-//    "Tennessee":"TN",
-//    "Texas":"TX",
-//    "Utah":"UT",
-//    "Vermont":"VT",
-//    "Virginia":"VA",
-//    "Washington":"WA",
-//    "West Virginia":"WV",
-//    "Wisconsin":"WI",
-//    "Wyoming":"WY"
-    
-    func createStatesList() -> [(stateName: String, isChecked: Bool)] {
-        return [("Alabama", false),("Alask", false),("Arizona", false),("Arkansas", false)
-                ,("California", false),("Colorado", false),("Connecticut", false),("Delaware", false)
-                ,("Florida", false),("Georgia", false),("Hawaii", false),("Idaho", false)
-                ,("Illinois", false),("Indiana", false),("Iowa", false),("Kansas", false)]
+        stateListTableView.reloadData()
+
+        stateListTableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    //    "Alabama":"AL",
-    //    "Alaska":"AK",
-    //    "Arizona":"AZ",
-    //    "Arkansas":"AR",
-    //    "California":"CA",
-    //    "Colorado":"CO",
-    //    "Connecticut":"CT",
-    //    "Delaware":"DE",
-    //    "Florida":"FL",
-    //    "Georgia":"GA",
-    //    "Hawaii":"HI",
-    //    "Idaho":"ID",
-    //    "Illinois":"IL",
-    //    "Indiana":"IN",
-    //    "Iowa":"IA",
-    //    "Kansas":"KS",
-    //    "Kentucky":"KY",
-    //    "Louisiana":"LA",
-    //    "Maine":"ME",
-    //    "Maryland":"MD",
-    //    "Massachusetts":"MA",
-    //    "Michigan":"MI",
-    //    "Minnesota":"MN",
-    //    "Mississippi":"MS",
-    //    "Missouri":"MO",
-    //    "Montana":"MT",
-    //    "Nebraska":"NE",
 }
