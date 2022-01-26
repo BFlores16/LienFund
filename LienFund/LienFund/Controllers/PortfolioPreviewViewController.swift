@@ -88,16 +88,12 @@ class PortfolioPreviewViewController: UIViewController, UITableViewDelegate, UIT
         }
         return viewModels
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "toCompleted") {
+            if let vc = segue.destination as? CompletedViewController {
+                vc.message = "Success! Lienfund will review your request and follow up with further instructions."
+            }
+        }
     }
-    */
-
 }

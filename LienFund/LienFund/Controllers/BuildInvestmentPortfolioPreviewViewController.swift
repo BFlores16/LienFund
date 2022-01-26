@@ -108,6 +108,19 @@ class BuildInvestmentPortfolioPreviewViewController: UIViewController, UITableVi
         return viewModels
     }
     
+    @IBAction func confirmButtonClicked(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toCompleted", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toCompleted") {
+            if let vc = segue.destination as? CompletedViewController {
+                vc.message = "Success! Lienfund will review your request and follow up with further instructions."
+                vc.isModalInPresentation = true
+            }
+        }
+    }
+    
     func parseTaxLienData() {
         taxLiens = [
             TaxLien(number: 1004, county: "Miami", state: "Florida", price: 900.56, rate: 18, address: "9909 Smith Lane", city: "Hiealeah", zipcode: "33012"),

@@ -437,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl7-TU-hYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="-132"/>
+            <point key="canvasLocation" x="2554" y="-137"/>
         </scene>
         <!--Lien Listings View Controller-->
         <scene sceneID="bUG-xW-Cxh">
@@ -1321,17 +1321,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ca0-my-2WV">
                                         <rect key="frame" x="20" y="180" width="388" height="64"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UV4-pj-mPh">
-                                                <rect key="frame" x="0.0" y="0.0" width="388" height="64"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain"/>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Purchase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fS-be-qdU">
                                                 <rect key="frame" x="78.666666666666686" y="14" width="231" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" name="GreenBackground"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UV4-pj-mPh">
+                                                <rect key="frame" x="0.0" y="0.0" width="388" height="64"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <segue destination="Moj-nI-WhB" kind="showDetail" identifier="toCompleted" id="Gf9-Aj-Pwe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1404,7 +1407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9x-tk-skW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3564" y="225"/>
+            <point key="canvasLocation" x="3858" y="225"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="POC-NR-Yfc">
@@ -2528,6 +2531,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="388" height="65"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="confirmButtonClicked:" destination="5Ip-Lo-DS1" eventType="touchUpInside" id="Ogx-uk-D5V"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2609,28 +2615,104 @@
                         <outlet property="confirmButtonFrame" destination="yUF-p5-bOW" id="2qp-De-ok0"/>
                         <outlet property="numberOfLiensLabel" destination="thv-OE-zKU" id="WgC-VM-m1L"/>
                         <outlet property="summaryFrame" destination="qBc-CC-gyZ" id="Of6-Tk-8BD"/>
+                        <segue destination="Moj-nI-WhB" kind="showDetail" identifier="toCompleted" id="GNn-Aa-et7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dev-wW-cho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3857.9439252336447" y="907.77537796976253"/>
         </scene>
-        <!--View Controller-->
+        <!--Completed View Controller-->
         <scene sceneID="6gv-Ra-Mu8">
             <objects>
-                <viewController id="Moj-nI-WhB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompletedViewController" id="Moj-nI-WhB" customClass="CompletedViewController" customModule="LienFund" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BH5-HW-A06">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fc0-zk-pDl">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="skb-Wk-zHD">
+                                        <rect key="frame" x="94" y="372.33333333333331" width="240" height="128"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="129.33000000000001" id="Rcy-O9-vLm"/>
+                                            <constraint firstAttribute="width" constant="240" id="dDc-rO-G2S"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A paragraph to simulate what the app will show in this section" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVw-Fs-5hr">
+                                        <rect key="frame" x="51" y="500.66666666666669" width="326" height="89.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIP-MQ-m71">
+                                        <rect key="frame" x="20" y="765" width="388" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-zc-KDm">
+                                                <rect key="frame" x="161.66666666666666" y="17.666666666666629" width="64.666666666666657" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <color key="textColor" name="GreenBackground"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-Fo-wPh">
+                                                <rect key="frame" x="0.0" y="0.0" width="388" height="65"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="closeButtonClicked:" destination="Moj-nI-WhB" eventType="touchUpInside" id="MRM-yl-SCw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1s7-Fo-wPh" secondAttribute="trailing" id="9Q0-Yj-Dwj"/>
+                                            <constraint firstItem="4y5-zc-KDm" firstAttribute="centerY" secondItem="tIP-MQ-m71" secondAttribute="centerY" id="Ktm-XC-YiK"/>
+                                            <constraint firstAttribute="height" constant="65" id="e4T-96-4gd"/>
+                                            <constraint firstItem="1s7-Fo-wPh" firstAttribute="top" secondItem="tIP-MQ-m71" secondAttribute="top" id="pYR-vl-bWB"/>
+                                            <constraint firstItem="1s7-Fo-wPh" firstAttribute="leading" secondItem="tIP-MQ-m71" secondAttribute="leading" id="phX-T6-AZL"/>
+                                            <constraint firstAttribute="bottom" secondItem="1s7-Fo-wPh" secondAttribute="bottom" id="r8I-0B-1Eb"/>
+                                            <constraint firstItem="4y5-zc-KDm" firstAttribute="centerX" secondItem="tIP-MQ-m71" secondAttribute="centerX" id="wgX-pp-raT"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="GreenBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tIP-MQ-m71" secondAttribute="trailing" constant="20" symbolic="YES" id="0jQ-cO-eWJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="tIP-MQ-m71" secondAttribute="bottom" constant="42" id="0jh-0H-2Fg"/>
+                                    <constraint firstItem="skb-Wk-zHD" firstAttribute="centerX" secondItem="fc0-zk-pDl" secondAttribute="centerX" id="RrI-5Y-4FE"/>
+                                    <constraint firstItem="tIP-MQ-m71" firstAttribute="leading" secondItem="fc0-zk-pDl" secondAttribute="leading" constant="20" symbolic="YES" id="aOw-bo-9w6"/>
+                                    <constraint firstAttribute="trailing" secondItem="nVw-Fs-5hr" secondAttribute="trailing" constant="51" id="exx-PY-Dnn"/>
+                                    <constraint firstItem="tIP-MQ-m71" firstAttribute="top" relation="lessThanOrEqual" secondItem="nVw-Fs-5hr" secondAttribute="bottom" constant="201.66999999999999" id="feY-9q-hkd"/>
+                                    <constraint firstItem="nVw-Fs-5hr" firstAttribute="leading" secondItem="fc0-zk-pDl" secondAttribute="leading" constant="51" id="meX-KE-yGB"/>
+                                    <constraint firstItem="skb-Wk-zHD" firstAttribute="centerY" secondItem="fc0-zk-pDl" secondAttribute="centerY" id="wiA-My-VYp"/>
+                                    <constraint firstItem="nVw-Fs-5hr" firstAttribute="top" secondItem="skb-Wk-zHD" secondAttribute="bottom" id="yGg-Q6-4ZZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ibG-PB-j6E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fc0-zk-pDl" firstAttribute="leading" secondItem="ibG-PB-j6E" secondAttribute="leading" id="3rJ-Pt-pbN"/>
+                            <constraint firstAttribute="bottom" secondItem="fc0-zk-pDl" secondAttribute="bottom" id="8VS-KL-wOd"/>
+                            <constraint firstItem="fc0-zk-pDl" firstAttribute="top" secondItem="BH5-HW-A06" secondAttribute="top" id="KV3-T6-5yX"/>
+                            <constraint firstItem="fc0-zk-pDl" firstAttribute="trailing" secondItem="ibG-PB-j6E" secondAttribute="trailing" id="zCX-vw-XjC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonFrame" destination="tIP-MQ-m71" id="tqf-LO-j3Z"/>
+                        <outlet property="messageLabel" destination="nVw-Fs-5hr" id="nv4-qD-ZKm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSe-GI-SaQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4581" y="908"/>
+            <point key="canvasLocation" x="4761" y="639"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GNn-Aa-et7"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Chevron" width="1024" height="1024"/>
         <image name="Filter2" width="40" height="40"/>
@@ -2639,6 +2721,7 @@
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="121"/>
