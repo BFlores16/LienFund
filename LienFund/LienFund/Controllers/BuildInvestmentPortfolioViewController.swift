@@ -143,6 +143,12 @@ class BuildInvestmentPortfolioViewController: UIViewController, InvestmentObject
                 vc.selectedStates = selectedStates
                 vc.delegate = self
             }
+        } else if (segue.identifier == "toBuildPortfolioPreview") {
+            if let vc = segue.destination as? BuildInvestmentPortfolioPreviewViewController {
+                vc.investmentAmount = Double(totalInvestmentTextField.text ?? "0.0") ?? 0.0
+                vc.investmentObjectiveOption = self.investmentObjectiveOption
+                vc.timeUntilExpirationOption = self.timeUntilExpirationOption
+            }
         }
     }
     
