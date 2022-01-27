@@ -88,6 +88,10 @@ class PortfolioPreviewViewController: UIViewController, UITableViewDelegate, UIT
         }
         return viewModels
     }
+    
+    @IBAction func confirmButtonClicked(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toCompleted", sender: nil)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toCompleted") {

@@ -1332,7 +1332,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
-                                                    <segue destination="Moj-nI-WhB" kind="showDetail" identifier="toCompleted" id="Gf9-Aj-Pwe"/>
+                                                    <action selector="confirmButtonClicked:" destination="div-n4-T0c" eventType="touchUpInside" id="JDo-Sf-CAe"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1403,6 +1403,7 @@
                         <outlet property="confirmButtonFrame" destination="Ca0-my-2WV" id="HxE-fl-eqN"/>
                         <outlet property="myPortfolioTable" destination="YWE-O7-Uj1" id="lYV-Gw-rYt"/>
                         <outlet property="summaryFrame" destination="vjC-hN-OVA" id="nvq-99-g10"/>
+                        <segue destination="Moj-nI-WhB" kind="showDetail" identifier="toCompleted" id="t4g-IT-EDt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9x-tk-skW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2700,6 +2701,7 @@
                             <constraint firstItem="fc0-zk-pDl" firstAttribute="trailing" secondItem="ibG-PB-j6E" secondAttribute="trailing" id="zCX-vw-XjC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vIG-k3-66o"/>
                     <connections>
                         <outlet property="buttonFrame" destination="tIP-MQ-m71" id="tqf-LO-j3Z"/>
                         <outlet property="messageLabel" destination="nVw-Fs-5hr" id="nv4-qD-ZKm"/>
@@ -2711,7 +2713,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GNn-Aa-et7"/>
+        <segue reference="t4g-IT-EDt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Chevron" width="1024" height="1024"/>
