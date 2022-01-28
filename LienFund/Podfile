@@ -6,6 +6,6 @@ target 'LienFund' do
   use_frameworks!
 
   # Pods for LienFund
-pod 'Charts'
+pod 'Charts', '~> 3.6'
 pod 'SQLite.swift', '~> 0.13.1'
 end

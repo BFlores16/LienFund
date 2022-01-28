@@ -7,7 +7,7 @@ PODS:
   - SQLite.swift/standard (0.13.2)
 
 DEPENDENCIES:
-  - Charts
+  - Charts (~> 3.6)
   - SQLite.swift (~> 0.13.1)
 
 SPEC REPOS:
@@ -19,6 +19,6 @@ SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef
 
-PODFILE CHECKSUM: b01e1cb468c2a3863e62c7051d32ec25815d6a4d
+PODFILE CHECKSUM: cd478b8b66cdcfe34899726ecb93c223d8c9a7f1
 
 COCOAPODS: 1.11.2
