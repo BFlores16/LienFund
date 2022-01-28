@@ -2,9 +2,9 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - SQLite.swift (0.13.1):
-    - SQLite.swift/standard (= 0.13.1)
-  - SQLite.swift/standard (0.13.1)
+  - SQLite.swift (0.13.2):
+    - SQLite.swift/standard (= 0.13.2)
+  - SQLite.swift/standard (0.13.2)
 
 DEPENDENCIES:
   - Charts
@@ -17,7 +17,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  SQLite.swift: 30f2cdb09627181d472e55c4bc6b3b161f28de33
+  SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef
 
 PODFILE CHECKSUM: b01e1cb468c2a3863e62c7051d32ec25815d6a4d
 
