@@ -19,6 +19,9 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     // Database
     let lienListingsDB = ListingsTable()
     
+    // Filter Data
+    var filteredLiens: [LienListingCellViewModel]!
+    
     @IBOutlet weak var taxLienSearchBar: UISearchBar!
     @IBOutlet weak var taxLienFilterButton: UIButton!
     @IBOutlet weak var taxLienListingsTableView: UITableView!
@@ -34,6 +37,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
         parseTaxLienData()
+        filteredLiens = lienListingsCellsViewModels
         setupInitialUI()
     }
     
@@ -80,12 +84,38 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienSearchBar.endEditing(true)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredLiens = lienListingsCellsViewModels
+            taxLienListingsTableView.reloadData()
+            return
+        }
+        let lienNumbers =  lienListingsCellsViewModels.filter( {String($0.number).contains(searchText)})
+
+        let addresses =  lienListingsCellsViewModels.filter( {(String($0.address)).uppercased().contains(searchText.uppercased())})
+        let prices =  lienListingsCellsViewModels.filter( {String($0.price).contains(searchText)})
+        let counties =  lienListingsCellsViewModels.filter( {String($0.county.uppercased()).contains(searchText.uppercased())})
+        let states =  lienListingsCellsViewModels.filter( {String($0.state.uppercased()).contains(searchText.uppercased())})
+        let cities =  lienListingsCellsViewModels.filter( {String($0.city.uppercased()).contains(searchText.uppercased())})
+        let zips =  lienListingsCellsViewModels.filter( {String($0.zipcode.uppercased()).contains(searchText.uppercased())})
+        
+        let items = lienNumbers + addresses + prices + counties + states + cities + zips
+        
+        if !items.isEmpty {
+            filteredLiens.removeAll()
+            filteredLiens.append(contentsOf: items)
+            taxLienListingsTableView.reloadData()
+        } else {
+            filteredLiens.removeAll()
+            taxLienListingsTableView.reloadData()
+        }
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.lienListingsCellsViewModels.count
+        return self.filteredLiens.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,10 +134,10 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         let cell = self.taxLienListingsTableView.dequeueReusableCell(withIdentifier: lienListingReusableCellIdentifier, for: indexPath) as! TaxLienListingTableViewCell
         cell.selectionStyle = .none
         
-        cell.LienNumberLabel.text = "# " + String(self.lienListingsCellsViewModels[indexPath.section].number)
-        cell.LienLocationLabel.text = self.lienListingsCellsViewModels[indexPath.section].county + ", " + self.lienListingsCellsViewModels[indexPath.section].state
-        cell.LienPriceLabel.text = String(self.lienListingsCellsViewModels[indexPath.section].price)
-        cell.InterestRateLabel.text = String(self.lienListingsCellsViewModels[indexPath.section].rate)
+        cell.LienNumberLabel.text = "# " + String(self.filteredLiens[indexPath.section].number)
+        cell.LienLocationLabel.text = self.filteredLiens[indexPath.section].county + ", " + self.filteredLiens[indexPath.section].state
+        cell.LienPriceLabel.text = String(self.filteredLiens[indexPath.section].price)
+        cell.InterestRateLabel.text = String(self.filteredLiens[indexPath.section].rate)
 
         return cell
     }
@@ -115,7 +145,8 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LienDetailsViewController") as! LienDetailsViewController
         navigationController?.pushViewController(vc, animated: true)
-        vc.taxLien = taxLiens[indexPath.section]
+        let taxLien = filteredLiens[indexPath.section]
+        vc.taxLien = TaxLien(number: taxLien.number, county: taxLien.county, state: taxLien.state, price: Double(taxLien.price.filter("0123456789.".contains)) ?? 0.0, rate: Double(taxLien.rate.filter("0123456789.".contains)) ?? 0.0, address: taxLien.address, city: taxLien.city, zipcode: taxLien.zipcode)
         taxLienListingsTableView.deselectRow(at: indexPath, animated: true)
     }
     
