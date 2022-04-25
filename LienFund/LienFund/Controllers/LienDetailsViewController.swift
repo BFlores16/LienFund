@@ -111,7 +111,7 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
             TaxLienNumber.text = number
             TaxLienPrice.text = price
             TaxLienPercentAnnual.text = annualPercent + " (annually)"
-            let monthlyRate = taxLien!.rate / 2.0
+            let monthlyRate = taxLien!.rate / 12.0
             TaxLienPercentMonthly.text = String(format: "%.1f%%", monthlyRate) + " (monthly)"
             TaxLienExpectedAnnualReturn.text = currencyFormatter.string(from: NSNumber(value: taxLien?.price ?? 0.0 / 4.0))!
             TaxLienAddress.text = taxLien?.address
