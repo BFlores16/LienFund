@@ -37,13 +37,13 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
         parseTaxLienData()
-        filteredLiens = lienListingsCellsViewModels
         setupInitialUI()
     }
     
     func parseTaxLienData() {
         taxLiens = lienListingsDB.GetTaxLiens()
         lienListingsCellsViewModels = convertTaxLienToLienListingCellViewModels(taxLiens: taxLiens)
+        filteredLiens = lienListingsCellsViewModels
 //        taxLiens = convertToLiensListings(liensData: readTxtFile(fileName: LIENS_DATA_FILE))
 //        lienListingsCellsViewModels = convertTaxLienToLienListingCellViewModels(taxLiens: taxLiens)
     }
@@ -84,7 +84,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
         taxLienSearchBar.endEditing(true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchForLien(searchText: String) {
         if searchText.isEmpty {
             filteredLiens = lienListingsCellsViewModels
             taxLienListingsTableView.reloadData()
@@ -110,7 +110,11 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
             taxLienListingsTableView.reloadData()
         }
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchForLien(searchText: searchText)
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchForLien(searchText: taxLienSearchBar.text ?? "")
         searchBar.resignFirstResponder()
     }
     
@@ -152,6 +156,7 @@ class LienListingsViewController: UIViewController, UISearchBarDelegate, UITable
     
     @objc func portfolioChanged() {
         parseTaxLienData()
+        searchForLien(searchText: taxLienSearchBar.text ?? "")
         taxLienListingsTableView.reloadData()
     }
     

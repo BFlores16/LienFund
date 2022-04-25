@@ -646,7 +646,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" name="GreenBackground"/>
                                 <constraints>
                                     <constraint firstItem="gyf-fJ-82O" firstAttribute="leading" secondItem="YN8-7B-82C" secondAttribute="leading" id="3BF-he-Rag"/>
                                     <constraint firstAttribute="trailing" secondItem="deA-na-IrI" secondAttribute="trailing" id="Con-2P-2Mp"/>
@@ -1560,8 +1560,11 @@
                     <navigationItem key="navigationItem" id="oQ9-A7-u6b"/>
                     <connections>
                         <outlet property="confirmButtonFrame" destination="Ca0-my-2WV" id="HxE-fl-eqN"/>
+                        <outlet property="feesLabel" destination="1hW-M5-qWz" id="VR7-ip-9BE"/>
                         <outlet property="myPortfolioTable" destination="YWE-O7-Uj1" id="lYV-Gw-rYt"/>
+                        <outlet property="numberOfLiensLabel" destination="5af-E1-hRL" id="7i9-PI-xdz"/>
                         <outlet property="summaryFrame" destination="vjC-hN-OVA" id="nvq-99-g10"/>
+                        <outlet property="totalPriceLabel" destination="b7z-7e-29y" id="6x7-pw-CZ6"/>
                         <segue destination="Moj-nI-WhB" kind="showDetail" identifier="toCompleted" id="t4g-IT-EDt"/>
                     </connections>
                 </viewController>

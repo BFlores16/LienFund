@@ -14,6 +14,9 @@ class PortfolioPreviewViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var confirmButtonFrame: UIView!
     @IBOutlet weak var summaryFrame: UIView!
     let lienListingReusableCellIdentifier = "TaxLienListingTableViewCell"
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var numberOfLiensLabel: UILabel!
+    @IBOutlet weak var feesLabel: UILabel!
     
     // Database
     let portfolioDB = PortfolioTable()
@@ -32,6 +35,19 @@ class PortfolioPreviewViewController: UIViewController, UITableViewDelegate, UIT
         // Confirm button
         confirmButtonFrame.layer.cornerRadius = 10
         confirmButtonFrame.clipsToBounds = true
+        
+        // Portfolio Data
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+        var totalPrice = 0.0
+        for lien in taxLiens {
+            totalPrice += lien.price
+        }
+        totalPriceLabel.text = currencyFormatter.string(from: NSNumber(value: totalPrice))!
+        numberOfLiensLabel.text = String(taxLiens.count)
+        feesLabel.text = currencyFormatter.string(from: NSNumber(value: totalPrice * 0.05))!
         
         // Summary Frame
         summaryFrame.layer.cornerRadius = 30
