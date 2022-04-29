@@ -1,5 +1,5 @@
 562,Douglas,Colorado,562.14,9.0,3 Hillcrest Circle,Fort Lupton,80621
-566,Apache,Arizona,203.98,16.0,3780 S Camino Del Defiro,Green Valley,85614
+566,Apache,Arizona,687.45,16.0,3780 S Camino Del Defiro,Green Valley,85614
 756,Gila,Arizona,249.7,16.0,13640 W Solano Dr,Litchfield Park,85340
 800,Marshall,Kentucky,5021.63,12.0,596 Westport Drive,Covington,41014
 822,Gila,Arizona,380.36,16.0,9842 Phoenix Dr,Mohave Valley,86440

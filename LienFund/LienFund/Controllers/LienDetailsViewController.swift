@@ -20,7 +20,8 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
 
     // Chart
     @IBOutlet weak var ProjectedEarningsChartFrame: UIView!
-
+    @IBOutlet weak var ExampleLienImage: UIImageView!
+    
     @IBOutlet weak var ProjectedEarningsChart: BarLineChartViewBase!
     
     // Header
@@ -49,6 +50,11 @@ class LienDetailsViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
+        
+        if taxLien?.number == 566 {
+            ExampleLienImage.isHidden = false
+            ProjectedEarningsChart.isHidden = true
+        }
         
         SetupUI()
         setupLabels()

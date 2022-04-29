@@ -47,6 +47,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-Vd-0vQ" userLabel="ProjectedEarningsChartFrame">
                                                 <rect key="frame" x="15" y="60" width="398" height="263"/>
                                                 <subviews>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Example Lien" translatesAutoresizingMaskIntoConstraints="NO" id="P5J-nc-2Ea">
+                                                        <rect key="frame" x="8" y="9" width="382" height="246"/>
+                                                    </imageView>
                                                     <view contentMode="scaleToFill" id="bbS-3Z-9V7" customClass="BarChartView" customModule="Charts">
                                                         <rect key="frame" x="8" y="9" width="383" height="245"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,6 +58,10 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="263" id="G8O-xE-DKk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="P5J-nc-2Ea" secondAttribute="bottom" constant="8" id="SWg-A7-W1H"/>
+                                                    <constraint firstAttribute="trailing" secondItem="P5J-nc-2Ea" secondAttribute="trailing" constant="8" id="dvK-zR-jis"/>
+                                                    <constraint firstItem="P5J-nc-2Ea" firstAttribute="top" secondItem="H8j-Vd-0vQ" secondAttribute="top" constant="9" id="xBh-VL-AG2"/>
+                                                    <constraint firstItem="P5J-nc-2Ea" firstAttribute="leading" secondItem="H8j-Vd-0vQ" secondAttribute="leading" constant="8" id="zXy-Dp-PKv"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projected Lien Earnings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnm-0P-u66">
@@ -392,6 +399,7 @@
                     <connections>
                         <outlet property="AddButtonFrame" destination="xdN-1B-c5f" id="jI7-gd-Jj0"/>
                         <outlet property="AddToPortfolioButton" destination="Bv3-wP-VGA" id="McO-Kr-0tk"/>
+                        <outlet property="ExampleLienImage" destination="P5J-nc-2Ea" id="78X-ta-qMz"/>
                         <outlet property="ProjectedEarningsChart" destination="bbS-3Z-9V7" id="riv-mm-JbY"/>
                         <outlet property="ProjectedEarningsChartFrame" destination="H8j-Vd-0vQ" id="Yq1-YT-Jb4"/>
                         <outlet property="TaxLienAddress" destination="T2L-or-s0R" id="cjI-6S-XqG"/>
@@ -2833,6 +2841,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Chevron" width="1024" height="1024"/>
+        <image name="Example Lien" width="818" height="600"/>
         <image name="Filter2" width="40" height="40"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
