@@ -47,33 +47,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-Vd-0vQ" userLabel="ProjectedEarningsChartFrame">
                                                 <rect key="frame" x="15" y="60" width="398" height="263"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" id="bbS-3Z-9V7" customClass="LineChartView" customModule="Charts">
+                                                    <view contentMode="scaleToFill" id="bbS-3Z-9V7" customClass="BarChartView" customModule="Charts">
                                                         <rect key="frame" x="8" y="9" width="383" height="245"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="rez-d3-32R">
-                                                                <rect key="frame" x="8" y="0.0" width="367" height="20.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="$ 687.45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQz-8z-VFq">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="170.5" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" name="GreenBackground"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as of January 2022" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-6P-Pae">
-                                                                        <rect key="frame" x="220.5" y="0.0" width="146.5" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="rez-d3-32R" firstAttribute="leading" secondItem="bbS-3Z-9V7" secondAttribute="leading" constant="8" id="69l-Wb-IYE"/>
-                                                            <constraint firstAttribute="trailing" secondItem="rez-d3-32R" secondAttribute="trailing" constant="8" id="MCa-iH-BzM"/>
-                                                            <constraint firstItem="rez-d3-32R" firstAttribute="top" secondItem="bbS-3Z-9V7" secondAttribute="top" id="lQ3-lb-POH"/>
-                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -416,7 +392,7 @@
                     <connections>
                         <outlet property="AddButtonFrame" destination="xdN-1B-c5f" id="jI7-gd-Jj0"/>
                         <outlet property="AddToPortfolioButton" destination="Bv3-wP-VGA" id="McO-Kr-0tk"/>
-                        <outlet property="ProjectedEarningsChart" destination="bbS-3Z-9V7" id="hgq-8x-bKM"/>
+                        <outlet property="ProjectedEarningsChart" destination="bbS-3Z-9V7" id="riv-mm-JbY"/>
                         <outlet property="ProjectedEarningsChartFrame" destination="H8j-Vd-0vQ" id="Yq1-YT-Jb4"/>
                         <outlet property="TaxLienAddress" destination="T2L-or-s0R" id="cjI-6S-XqG"/>
                         <outlet property="TaxLienCityState" destination="KC5-bT-8by" id="D3X-iI-Wb4"/>
@@ -788,34 +764,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyT-T3-ztp" userLabel="ProjectedEarningsChartFrame">
                                                 <rect key="frame" x="15" y="60" width="384" height="263"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" id="oHo-39-Lt2" customClass="LineChartView" customModule="Charts">
+                                                    <view contentMode="scaleToFill" id="oHo-39-Lt2" customClass="BarChartView" customModule="Charts">
                                                         <rect key="frame" x="8" y="9" width="368" height="245"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="iei-vJ-9dt">
-                                                                <rect key="frame" x="8" y="0.0" width="352" height="20.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="$ 687.45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3G-j8-zyW">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as of January 2022" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-b2-Y9k">
-                                                                        <rect key="frame" x="205.5" y="0.0" width="146.5" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
                                                         <color key="backgroundColor" name="GreenBackground"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="iei-vJ-9dt" secondAttribute="trailing" constant="8" id="nEO-ez-XKc"/>
-                                                            <constraint firstItem="iei-vJ-9dt" firstAttribute="leading" secondItem="oHo-39-Lt2" secondAttribute="leading" constant="8" id="sb7-lo-acj"/>
-                                                            <constraint firstItem="iei-vJ-9dt" firstAttribute="top" secondItem="oHo-39-Lt2" secondAttribute="top" id="yTW-s6-TTm"/>
-                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="GreenBackground"/>

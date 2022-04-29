@@ -36,57 +36,104 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         
         NC.addObserver(self, selector: #selector(portfolioChanged), name: Notification.Name(Strings.NCPortfolioChanged), object: nil)
         
+        // Table view
         taxLienListingsTableView.delegate = self
         taxLienListingsTableView.dataSource = self
         taxLienListingsTableView.register(UINib(nibName: lienListingReusableCellIdentifier, bundle: nil), forCellReuseIdentifier: lienListingReusableCellIdentifier)
         
         // Do any additional setup after loading the view.
         BuyButton.layer.cornerRadius = 10
-
-        lineChart.delegate = self
-        // Do any additional setup after loading the view.
-        var dataEntries: [ChartDataEntry] = []
-        for i in 10..<20 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(i))
-            dataEntries.append(dataEntry)
+        
+        parseTaxLienData()
+        updateBuyButton()
+        if taxLiens.count > 0 {
+            updateChart()
         }
+        customizeChart()
+    }
+    
+    func updateChart() {
+        // Supply data
+        var entries = [BarChartDataEntry]()
+        var expirations = [Int]()
+        let totalTaxLiensCost = taxLiens.reduce(0) {$0 + $1.price}
+        
+        for lien in taxLiens {
+            let expiration = Int(Expirations.C[lien.state ]!)!
+            expirations.append(expiration)
+        }
+        //let minimumExpiration = expirations.min()
+        let maximumExpiration = expirations.max() ?? 0
+        
+        let earnings = calculateAnnualEarnings(longestExpiration: maximumExpiration)
 
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
-        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChartDataSet.drawCirclesEnabled = false
-        lineChartDataSet.drawValuesEnabled = false
-        lineChartDataSet.lineWidth = 5
-        lineChartDataSet.colors = [UIColor.white]
-        ProjectedEarningsChart.data = lineChartData
-        ProjectedEarningsChart.legend.enabled = false
-        ProjectedEarningsChart.xAxis.drawGridLinesEnabled = false
-        ProjectedEarningsChart.xAxis.drawAxisLineEnabled = false
+        for x in 1...earnings.count {
+            entries.append(BarChartDataEntry(x: Double(x), yValues: [totalTaxLiensCost, earnings[x - 1]]))
+        }
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+        let set = BarChartDataSet(entries: entries)
+        set.colors = [
+            NSUIColor(cgColor: UIColor.lightGray.cgColor),
+            NSUIColor(cgColor: UIColor.init(named: "CustomOrange")!.cgColor),
+            NSUIColor(cgColor: UIColor.lightGray.cgColor),
+            NSUIColor(cgColor: UIColor.init(named: "CustomYellow")!.cgColor),
+            NSUIColor(cgColor: UIColor.lightGray.cgColor),
+            NSUIColor(cgColor: UIColor.init(named: "CustomGreen")!.cgColor)
+        ]
+        
+        let data = BarChartData(dataSet: set)
+        data.setValueFormatter(DefaultValueFormatter.init(formatter: currencyFormatter))
+        let storedLegendEntries = [
+            LegendEntry(label: "1 Year", form: .line, formSize: CGFloat.nan, formLineWidth: .nan, formLineDashPhase: .nan, formLineDashLengths: .none, formColor: NSUIColor.init(named: "CustomOrange")),
+            LegendEntry(label: "2 Years", form: .line, formSize: CGFloat.nan, formLineWidth: .nan, formLineDashPhase: .nan, formLineDashLengths: .none, formColor: NSUIColor.init(named: "CustomYellow")),
+            LegendEntry(label: "3 Years", form: .line, formSize: CGFloat.nan, formLineWidth: .nan, formLineDashPhase: .nan, formLineDashLengths: .none, formColor: NSUIColor.init(named: "CustomGreen"))
+        ]
+
+        var legendEntries = [LegendEntry]()
+        for entry in 0...maximumExpiration - 1 {
+            legendEntries.append(storedLegendEntries[entry])
+        }
+        ProjectedEarningsChart.legend.setCustom(entries: legendEntries)
+        
+        ProjectedEarningsChart.leftAxis.valueFormatter = DefaultAxisValueFormatter.init(formatter: currencyFormatter)
+        ProjectedEarningsChart.data?.setValueFormatter(DefaultValueFormatter.init(formatter: currencyFormatter))
+
+        // Set Storyboard chart
+        ProjectedEarningsChart.data = data
+    }
+    
+    func customizeChart() {
         ProjectedEarningsChart.leftAxis.drawGridLinesEnabled = false
         ProjectedEarningsChart.leftAxis.drawAxisLineEnabled = false
-        ProjectedEarningsChart.rightAxis.drawGridLinesEnabled = false
         ProjectedEarningsChart.rightAxis.drawAxisLineEnabled = false
-        ProjectedEarningsChart.rightAxis.drawZeroLineEnabled = false
-        
         ProjectedEarningsChart.xAxis.enabled = false
         ProjectedEarningsChart.rightAxis.enabled = false
         ProjectedEarningsChart.highlightPerTapEnabled = false
         ProjectedEarningsChart.dragEnabled = false
         ProjectedEarningsChart.isUserInteractionEnabled = false
         
-        let gradientColors = [UIColor.green.cgColor, UIColor.clear.cgColor] as CFArray // Colors of the gradient
-        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
-        lineChartDataSet.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0) // Set the Gradient
-        lineChartDataSet.drawFilledEnabled = true // Draw the Gradient
-        
         ProjectedEarningsChartFrame.layer.cornerRadius = 10
         ProjectedEarningsChartFrame.layer.shadowColor = UIColor.black.cgColor
         ProjectedEarningsChartFrame.layer.shadowOpacity = 0.4
         ProjectedEarningsChartFrame.layer.shadowRadius = 4.0
         ProjectedEarningsChartFrame.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+    }
+    
+    func calculateAnnualEarnings(longestExpiration: Int) -> [Double]{
+        var earnings = [Double](repeating: 0.0, count: longestExpiration)
         
-        parseTaxLienData()
-        updateBuyButton()
+        for lien in taxLiens {
+            let dollarInterest = lien.price * (lien.rate / 100.0)
+            let years: Int = Int(Expirations.C[lien.state ]!) ?? 1
+            for year in 1...years {
+                earnings[year - 1] = (Double(year) * dollarInterest)
+            }
+        }
+        
+        return earnings
     }
     
     func parseTaxLienData() {
@@ -120,6 +167,11 @@ class PortfolioViewController: UIViewController, UITableViewDelegate, UITableVie
         parseTaxLienData()
         taxLienListingsTableView.reloadData()
         updateBuyButton()
+        if taxLiens.count > 0 {
+            updateChart()
+        } else {
+            ProjectedEarningsChart.clear()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
